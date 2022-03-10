@@ -1,0 +1,163 @@
+:root {
+  --mainColor: #333336;
+  --secondaryColor: #827c63;
+  --textColor: white;
+  --maxSize: 1550px;
+}
+
+:root.changeTheme {
+  --mainColor: #705548;
+  --secondaryColor: #6796bd;
+  --textColor: white;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../font/Lato/Lato-Regular.ttf"); /* IE9 Compat Modes */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+*:focus-visible {
+  outline: ghostwhite dashed 2px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-size: calc(16px + 6 * ((100vw - 320px) / 1000));
+}
+
+body {
+  background-color: var(--mainColor);
+  color: var(--textColor);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 1.5;
+}
+
+/* navigation related block */
+.navContainer {
+  background-color: var(--secondaryColor);
+}
+
+header {
+  display: grid;
+  grid-template-rows: auto auto;
+  font-family: Lato;
+  padding: 0 2vw;
+  padding-top: 2vh;
+}
+
+.navigation {
+  grid-column: 1;
+  height: 0px;
+  transition: height 0.5s ease-in-out;
+  overflow: hidden;
+  visibility: hidden;
+  margin-top: 20px;
+  padding: 0 2vw;
+}
+
+.navigation.show {
+  height: 21rem;
+  visibility: visible;
+  transition: height 0.5s ease-in-out;
+}
+
+.logoSection {
+  margin-right: 2vw;
+  margin-left: 2vw;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.menuButton {
+  padding: 10px;
+  background-color: transparent;
+  font-weight: bold;
+  border: none;
+  color: #f2f4f3;
+  font-size: 1.75rem;
+  cursor: pointer;
+  border-radius: 5px;
+  justify-self: start;
+}
+
+.menuButton:hover {
+  background-color: var(--mainColor);
+  color: var(--secondaryColor);
+}
+
+.mainLogo {
+  justify-self: end;
+  font-weight: bold;
+  letter-spacing: 1.15px;
+  grid-column: 2;
+  line-height: 4rem;
+  font-size: 1.2rem;
+}
+
+.menuLinks {
+  margin-top: 10px;
+  list-style: none;
+  font-size: 1.25rem;
+  grid-column: 1 2;
+  text-align: center;
+  position: relative;
+}
+
+.menuLinks > li > a {
+  display: block;
+  padding: 1.2rem;
+  border-radius: 5px;
+  background-color: var(--mainColor);
+  color: var(--secondaryColor);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.menuLinks > li:last-child > a {
+  padding-right: 0px;
+}
+
+/*end of navigation related block*/
+
+main {
+  padding-right: 2vw;
+  padding-left: 2vw;
+  margin: auto;
+  padding-top: 6vh;
+}
+
+.siteElement {
+  padding-right: max(19px, 2vw);
+  padding-left: max(19px, 2vw);
+  padding-top: max(10px, 1vh);
+  padding-bottom: max(10px, 1vh);
+}
+
+.lastArticle {
+  margin-bottom: 10px;
+}
+
+.articleText {
+  margin-top: 2vh;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.navigationButtonsAnim {
+  transition: all 0.35s ease-in-out;
+}
+
+.navigationButtonsAnim:hover {
+  transform: scale(0.95);
+}

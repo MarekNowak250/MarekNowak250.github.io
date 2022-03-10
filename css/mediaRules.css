@@ -1,0 +1,78 @@
+@media only screen and (max-width: 520px) {
+  .menuLinks > li > a {
+    padding: 1.1rem;
+  }
+
+  .menuLinks {
+    font-size: 1.2rem;
+  }
+
+  .navigation.show {
+    height: 20rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .navContainer {
+    padding-bottom: 1.5vh;
+    margin: auto;
+  }
+
+  header {
+    margin: auto;
+  }
+
+  .logoSection {
+    grid-row: 1;
+    justify-self: start;
+    margin-left: 0px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .navigation {
+    visibility: visible;
+    height: auto;
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+    margin: 0;
+    padding: 0;
+  }
+
+  main {
+    max-width: var(--maxSize);
+  }
+
+  .menuLinks {
+    display: flex;
+    margin: auto;
+    margin: 1px;
+  }
+
+  .menuLinks > li > a {
+    display: block;
+    padding: 1rem 1.5rem;
+    width: auto;
+    font-size: 1rem;
+    background-color: transparent;
+    font-weight: bold;
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  html {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  :root {
+    --maxSize: 1700px;
+  }
+}
