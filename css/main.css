@@ -42,3 +42,11 @@ body {
   color: var(--textColor);
   line-height: 1.5;
 }
+
+.navigationButtonsAnim {
+  transition: all 0.35s ease-in-out;
+}
+
+.navigationButtonsAnim:hover {
+  transform: scale(0.95);
+}
