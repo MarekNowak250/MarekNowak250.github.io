@@ -68,7 +68,7 @@ main {
 /* end of first section*/
 
 .secondSection {
-  height: 92vh;
+  min-height: 92vh;
 }
 
 .secondSection > h2 {
