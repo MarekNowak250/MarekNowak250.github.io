@@ -21,7 +21,7 @@ a {
 .firstSection {
   background-color: var(--mainColor);
   height: 100vh;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: 10vw 80vw 10vw;
@@ -62,7 +62,7 @@ a {
 }
 
 .authorName {
-  font-size: 3rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
 }
 
@@ -72,7 +72,7 @@ a {
 /* end of first section*/
 
 .secondSection {
-  min-height: 90vh;
+  min-height: 91vh;
   padding-bottom: 1.5vh;
 }
 
@@ -83,7 +83,7 @@ a {
   margin-top: 8vh;
   margin-bottom: 2rem;
   font-family: Lato, Times, serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .projectArticle {
@@ -107,4 +107,8 @@ a {
   grid-template-columns: 4rem auto;
   margin-top: 0.2rem;
   text-align: justify;
+}
+
+.projectField > a:focus-visible {
+  outline: var(--mainColor) dashed 2px;
 }
