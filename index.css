@@ -59,10 +59,11 @@ a {
   display: flex;
   flex-direction: row;
   align-self: center;
+  margin-top: 5rem;
 }
 
 .authorName {
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   margin-bottom: 15px;
 }
 
