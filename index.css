@@ -14,7 +14,7 @@ main {
 }
 
 a {
-  word-break: break-word;
+  word-break: break-all;
 }
 
 /*first section related stuff*/
@@ -105,7 +105,7 @@ a {
 
 .projectField {
   display: grid;
-  grid-template-columns: 4rem auto;
+  grid-template-columns: 6rem auto;
   margin-top: 0.2rem;
   text-align: justify;
 }

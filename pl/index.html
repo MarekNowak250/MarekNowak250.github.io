@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content=".Net Developer" />
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./index.css">
-    <link rel="stylesheet" href="./css/fontello.css"/>
+        content="Programista korzystający głównie z platformy .NET."/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="../css/fontello.css"/>
     <title>Andrzej Krzakowski</title>
+        <style>
+            .projectField {
+                grid-template-columns: 3.5rem auto;
+            }
+        </style>
 </head>
 <body>
     <main>
@@ -23,51 +28,51 @@
             <div class="authorInfo">
                 <div>
                     <h1 class="authorName">Andrzej Krzakowski</h1>
-                    <p class="sentenceAfterName">.NET Developer</p>
+                    <p class="sentenceAfterName">Programista .NET</p>
                 </div>
             </div>
         </section>
         <section class="secondSection">
-            <h2>Projects</h2>
+            <h2>Moje projekty</h2>
             <article class="projectArticle">
-                <h3>HTTP/1.1 Server</h3>
+                <h3>Serwer HTTP/1.1</h3>
                 <div class="projectField">
                     <h4>Link:</h4>
                     <a href="https://gitlab.com/Phoenix510/basichttpserver">https://gitlab.com/Phoenix510/basichttpserver</a>
                 </div>
                 <div class="projectField">
-                    <h4>Description:</h4>
-                    <p>HTTP/1.1 Server for Windows and Linux. Supports GET, POST and OPTIONS methods.</p>
+                    <h4>Opis:</h4>
+                    <p>Prosty serwer HTTP/1.1 wspierający metody GET, POST i OPTIONS oraz działający na systemach operacyjnych z rodzin: Windows oraz Linux.</p>
                 </div>
             </article>
             <article class="projectArticle">
-                <h3>System which allows to create accounts and posts</h3>
+                <h3>System pozwalający na tworzenie kont oraz wpisów</h3>
                     <div class="projectField">
                         <h4>Link:</h4>
                         <a href="https://gitlab.com/Phoenix510/sampleapi">https://gitlab.com/Phoenix510/sampleapi</a>
                     </div>
                      <div class="projectField">
-                        <h4>Description:</h4>
-                        <p>Simple system which contains two applications: RESTful API and BLAZOR client. Allows to create accounts and posts.</p>
+                        <h4>Opis:</h4>
+                        <p>Prosty system składający się z dwóch aplikacji: RESTful API oraz prostego klienta utworzonego z pomocą frameworka
+                            BLAZOR. Pozwala na tworzenia kont oraz zostawianie przy ich pomocy wpisów - komentarzy.</p>
                     </div>
             </article>
             <article class="projectArticle">
-                <h3>Chrome extension for youtube videoplayer</h3>
+                <h3>Wtyczka do przeglądarki Chrome pozwalająca zarządzać prędkością odtwarzania</h3>
                 <div class="projectField">
                     <h4>Link:</h4>
                     <a href="https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii">
-                            https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii</a>
+                        https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii</a>
                 </div>
                 <div class="projectField">
-                    <h4>Description:</h4>
-                    <p>Extension which allows you to manage video playback rate. Contains simple controls integrated into youtube interface:
-                        slider and numeric input. Also, there is possiblity to use a/+ and d/- keys to change rate.</p>
+                    <h4>Opis:</h4>
+                    <p>Wtyczka pozwalająca zarządzać prędkością odtwarzania filmów na platformie youtube. Posiada trzy możliwości kontroli
+                    poprzez klawisze a/+ oraz d/-, suwak oraz pole pozwalające wprowadzić żądaną wartość przyśpieszenia.</p>
                 </div>
             </article>
         </section>
-        <script src="./main.js"></script>
-        <script src="three.min.js"></script>
-        <script src="vanta.net.min.js"></script>
+        <script src="../three.min.js"></script>
+        <script src="../vanta.net.min.js"></script>
         <script>
             VANTA.NET({
                 el: ".firstSection",
