@@ -1,0 +1,214 @@
+{
+  "title": "MVVM w praktyce: 0 budowa bazowej aplikacji",
+  "date": "18/04/2022",
+  "lastEditDate": "18/04/2022 06:34",
+  "content": [
+    { "props": [], "content": "Kr\u00F3tkie wprowadzenie", "name": "header" },
+    {
+      "props": [],
+      "content": "Wzorzec ModelView View Model mimo wzgl\u0119dnie niskiego stopnia skomplikowania mo\u017Ce wyda\u0107 si\u0119 ci\u0119\u017Cki do ca\u0142kowitego zrozumienia w oderwaniu od praktycznego przyk\u0142adu. Dodatkowo w celu podkre\u015Blenia r\u00F3\u017Cnic i korzy\u015Bci zdecydowa\u0142em, \u017Ce najlepszym wyborem b\u0119dzie stworzenie aplikacji w \u0022klasycznym\u0022 stylu, a nast\u0119pnie wraz z wdra\u017Caniem element\u00F3w wzorca przekszta\u0142canie jej na zgodn\u0105 z jego za\u0142o\u017Ceniami. ",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Za przyk\u0142ad pos\u0142u\u017Cy prosty program pozwalaj\u0105cy wy\u015Bwietla\u0107, dodawa\u0107 i usuwa\u0107 produkty.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "//Uwaga do zrozumienia za\u0142o\u017Ce\u0144 wymagana jest podstawowa znajomo\u015B\u0107 j\u0119zyka C# oraz frameworka WPF.",
+      "name": "info"
+    },
+    { "props": [], "content": "Stw\u00F3rzmy aplikacj\u0119!", "name": "header" },
+    {
+      "props": [],
+      "content": "Rozpocznijmy wi\u0119c od utworzenia prostej klasy reprezentuj\u0105cej produkt (listing 1)  zawieraj\u0105cej 3 pola typu string: Id, Name, Description i  jedno typu decimal - Price.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "    public class Product\r\n    {\r\n        public int Id { get; set; }\r\n        public string Name { get; set; }\r\n        public string Description { get; set; }\r\n        public decimal Price { get; set; }\r\n\r\n        public Product(string name, string description, decimal price)\r\n        {\r\n            Name = name;\r\n            Description = description;\r\n            Price = price;\r\n        }\r\n    }",
+      "name": "code"
+    },
+    {
+      "props": [],
+      "content": "Maj\u0105c gotow\u0105 klas\u0119 produkty mo\u017Cemy zatroszczy\u0107 si\u0119 o stworzenie klasy pe\u0142ni\u0105c\u0105 rol\u0119 po\u015Brednika pomi\u0119dzy reszt\u0105 aplikacji a danymi. B\u0119dzie ona pozwala\u0142a wykonywa\u0107 podstawowe operacje na naszym zbiorze produkt\u00F3w: dodawanie, pobieranie, aktualizowanie i usuwanie. Dodatkowo troszczy\u0107 si\u0119 ona b\u0119dzie o informowanie wszystkich zainteresowanych zmianami \u2013 pozwoli na rejestracj\u0119 do swoistego \u201Enewslettera\u201D i przy ka\u017Cdej zmianie b\u0119dzie wywo\u0142ywa\u0107 metod\u0119 Update subskrybent\u00F3w.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Nadajmy klasie nazw\u0119 ProductStorage i dodajmy do niej dwa prywatne pola \u2013 list\u0119 produkt\u00F3w i list\u0119 obserwator\u00F3w, kt\u00F3rymi b\u0119d\u0105 obiekty implementuj\u0105ce interfejs Observer zawieraj\u0105cy jedynie metod\u0119 Update (listing 2).",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Ponadto utw\u00F3rzmy 4 metody: Get zwracaj\u0105c\u0105 wszystkie obiekty, Add pozwalaj\u0105c\u0105 doda\u0107 produkt, Update pozwalaj\u0105ca aktualizowa\u0107 produkty i Remove pozwalaj\u0105c\u0105 na usuni\u0119cie wybranego produktu. Kod reprezentuj\u0105cy te metody przedstawia listing 3.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "    public interface Observer\r\n    {\r\n        void Update(object arg);\r\n    }",
+      "name": "code"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "        public Product Get(int id) =\u003E _products.Find(x =\u003E x.Id == id);\r\n\r\n        public IEnumerable\u003CProduct\u003E Get() =\u003E _products;\r\n\r\n        public void Add(Product product)\r\n        {\r\n            if (_products.Count == 0)\r\n                product.Id = 1;\r\n            else\r\n                product.Id = _products.Max(p =\u003E p.Id) \u002B1;\r\n            _products.Add(product);\r\n\r\n            NotifyObservers(new UpdateArgs\u003CProduct\u003E(product, OperationType.Add));\r\n        }\r\n\r\n        public void Update(int id, Product product)\r\n        {\r\n            var item = _products.Find(i =\u003E i.Id == id);\r\n            if (item == null)\r\n                return;\r\n\r\n            item = product;\r\n            NotifyObservers(new UpdateArgs\u003CProduct\u003E(product, OperationType.Update));\r\n        }\r\n\r\n        public void Remove(int id) \r\n        {\r\n            var fProd = _products.Find(x =\u003E x.Id == id);\r\n            if (fProd is null)\r\n                return;\r\n\r\n            _products.Remove(fProd);\r\n            NotifyObservers(new UpdateArgs\u003CProduct\u003E(fProd, OperationType.Remove));\r\n        }",
+      "name": "code"
+    },
+    {
+      "props": [],
+      "content": "Pozosta\u0142o stworzy\u0107 obs\u0142ug\u0119 informowania \u2013 tworzymy metody, Register pozwalaj\u0105c\u0105 na rejestrowanie obserwatora, Unregister pozwalaj\u0105ca zrezygnowa\u0107 z subskrybcji oraz NotifyObservers s\u0142u\u017C\u0105c\u0105 do informowania wszystkich obserwuj\u0105cych o zmianie w zbiorze danych. Kod reprezentuj\u0105cy te metody przedstawia listing 4.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Metoda NotifyObservers w celu przekazania informacji korzysta z obiektu klasy UpdateArgs (listing 5) zawieraj\u0105cego dwie w\u0142a\u015Bciwo\u015Bci: Item przechowuj\u0105cej referencj\u0119 do zmienionego obiektu oraz Operation informuj\u0105cej o typie wykonanej operacji.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "        public void NotifyObservers(UpdateArgs\u003CProduct\u003E arg)\r\n        {\r\n            _observers.ForEach(o =\u003E o.Update(arg));\r\n        }\r\n\r\n        public void Register(Observer observer)\r\n        {\r\n            _observers.Add(observer);\r\n        }\r\n\r\n        public void Unregister(Observer observer)\r\n        {\r\n            _observers.Remove(observer);\r\n        }",
+      "name": "code"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "     public enum OperationType\r\n    {\r\n        Add,\r\n        Remove,\r\n        Update\r\n    }   \r\n     public class UpdateArgs\u003CT\u003E\r\n    {\r\n        public UpdateArgs(T item, OperationType operation)\r\n        {\r\n            this.Item = item;\r\n            this.Operation = operation;\r\n        }\r\n\r\n        public T Item { get; set; }\r\n        public OperationType Operation { get; set; }\r\n    }",
+      "name": "code"
+    },
+    {
+      "props": [],
+      "content": "Obiekt klasy ProductStorage udost\u0119pniany jest jako Singleton, implementacj\u0119 przedstawia listing 6.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "    public class ProductsStorage\r\n    {\r\n        private List\u003CProduct\u003E _products;\r\n        private List\u003CObserver\u003E _observers;\r\n\r\n        private static ProductsStorage? _instance = null;\r\n        private static readonly object _lock = new object();\r\n\r\n        private ProductsStorage()\r\n        {\r\n            _products = new List\u003CProduct\u003E();\r\n            _observers = new List\u003CObserver\u003E();\r\n            \r\n            Add(new Product(\u0022Mouse\u0022, \u0022Gaming mouse\u0022, 150.25M));\r\n            Add(new Product(\u0022Book\u0022, \u0022Great book with many...\u0022, 42.50M));\r\n            Add(new Product(\u0022DAC\u0022, \u0022Great sound Cheap price\u0022, 650.99M));\r\n            Add(new Product(\u0022Lamp\u0022, \u0022Black lamp\u0022, 80.25M));\r\n        }\r\n\r\n        public static ProductsStorage GetInstance()\r\n        {\r\n            if (_instance == null)\r\n            {\r\n                lock (_lock)\r\n                    _instance = new ProductsStorage();\r\n            }\r\n\r\n            return _instance;\r\n        }",
+      "name": "code"
+    },
+    { "props": [], "content": "Projekt widoku", "name": "header" },
+    {
+      "props": [],
+      "content": "Pozosta\u0142o nam nic innego jak stworzy\u0107 projekt widoku aplikacji. Dodajmy kontrolk\u0119 TabControl i podzielmy j\u0105 na dwie zak\u0142adki \u2013 jedn\u0105 z list\u0105 produkt\u00F3w i drug\u0105 z oknem dodawania nowego produktu.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "W pierwszej z zak\u0142adek umie\u015Bcimy wy\u0142\u0105cznie element DataGrid wy\u015Bwietlaj\u0105cy wszystkie przechowywane produkty i pozwalaj\u0105cy na ich usuwanie. Natomiast w drugiej dodajmy  kontrolk\u0119 u\u017Cytkownika o nazwie AddProduct.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Stw\u00F3rzmy j\u0105 z trzech p\u00F3l s\u0142u\u017C\u0105cych do wprowadzania danych nowego produktu i \u017Ceby nie kopiowa\u0107 niepotrzebnie kodu dodatkowo dodajmy kontrolk\u0119 InputWithLabel sk\u0142adaj\u0105c\u0105 si\u0119 z element\u00F3w TextBlock i TextBox (listing 7). Na koniec dodajmy przycisk pozwalaj\u0105cy zapisa\u0107 nowy produkt. Ostatecznie kod powinien przyjąć formę jak na listingu 8.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "xml" }],
+      "content": "\u003CUserControl x:Class=\u0022ProductApp.InputWithLabel\u0022\r\n             xmlns=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0022\r\n             xmlns:x=\u0022http://schemas.microsoft.com/winfx/2006/xaml\u0022\r\n             xmlns:mc=\u0022http://schemas.openxmlformats.org/markup-compatibility/2006\u0022 \r\n             xmlns:d=\u0022http://schemas.microsoft.com/expression/blend/2008\u0022 \r\n             mc:Ignorable=\u0022d\u0022 \u003E\r\n    \u003CGrid\u003E\r\n        \u003CGrid.ColumnDefinitions\u003E\r\n            \u003CColumnDefinition Width=\u0022auto\u0022/\u003E\r\n            \u003CColumnDefinition Width=\u0022*\u0022/\u003E\r\n        \u003C/Grid.ColumnDefinitions\u003E\r\n        \u003CTextBlock x:Name=\u0022label\u0022 MinWidth=\u0022100\u0022 Text=\u0022Label\u0022 Margin=\u00220,0,10,0\u0022/\u003E\r\n        \u003CTextBox x:Name=\u0022input\u0022 Grid.Column=\u00221\u0022/\u003E\r\n    \u003C/Grid\u003E\r\n\u003C/UserControl\u003E",
+      "name": "code"
+    },
+    {
+      "props": [{ "name": "lang", "content": "xml" }],
+      "content": "\u003CUserControl x:Class=\u0022ProductApp.AddProduct\u0022\r\n             xmlns=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0022\r\n             xmlns:x=\u0022http://schemas.microsoft.com/winfx/2006/xaml\u0022\r\n             xmlns:mc=\u0022http://schemas.openxmlformats.org/markup-compatibility/2006\u0022 \r\n             xmlns:d=\u0022http://schemas.microsoft.com/expression/blend/2008\u0022 \r\n             xmlns:local=\u0022clr-namespace:ProductApp\u0022\r\n             mc:Ignorable=\u0022d\u0022 \r\n             d:DesignHeight=\u0022450\u0022 d:DesignWidth=\u0022800\u0022\u003E\r\n    \u003CStackPanel\u003E\r\n        \u003CBorder BorderThickness=\u00222\u0022 BorderBrush=\u0022AliceBlue\u0022 Padding=\u002210\u0022 CornerRadius=\u00225\u0022\u003E\r\n            \u003CStackPanel\u003E\r\n                \u003CTextBlock Text=\u0022New product\u0022 FontSize=\u002217\u0022 Margin=\u00220,0,0,5\u0022 FontWeight=\u0022Bold\u0022/\u003E\r\n                \u003Clocal:InputWithLabel x:Name=\u0022name\u0022 LabelContent=\u0022Name:\u0022/\u003E\r\n                \u003Clocal:InputWithLabel x:Name=\u0022desc\u0022 LabelContent=\u0022Description:\u0022/\u003E\r\n                \u003Clocal:InputWithLabel x:Name=\u0022price\u0022 LabelContent=\u0022Price:\u0022/\u003E\r\n            \u003C/StackPanel\u003E\r\n        \u003C/Border\u003E\r\n        \u003CButton Content=\u0022Save\u0022 Click=\u0022SaveItemClick\u0022 Margin=\u00220, 15\u0022 FontSize=\u002216\u0022 FontWeight=\u0022Bold\u0022 Height=\u002245\u0022/\u003E\r\n    \u003C/StackPanel\u003E\r\n\u003C/UserControl\u003E\r\n",
+      "name": "code"
+    },
+    {
+      "props": [],
+      "content": "Po dodaniu styl\u00F3w kod xaml odpowiedzialny za wy\u015Bwietlanie okna g\u0142\u00F3wnego powinien wygl\u0105da\u0107 następująco:",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "xml" }],
+      "content": "\u003CWindow x:Class=\u0022ProductApp.MainWindow\u0022\r\n        xmlns=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0022\r\n        xmlns:x=\u0022http://schemas.microsoft.com/winfx/2006/xaml\u0022\r\n        xmlns:d=\u0022http://schemas.microsoft.com/expression/blend/2008\u0022\r\n        xmlns:mc=\u0022http://schemas.openxmlformats.org/markup-compatibility/2006\u0022\r\n        xmlns:local=\u0022clr-namespace:ProductApp\u0022\r\n        mc:Ignorable=\u0022d\u0022\r\n        Title=\u0022MainWindow\u0022 Height=\u0022600\u0022 Width=\u0022971\u0022 Background=\u0022#1c313a\u0022\u003E\r\n    \u003CWindow.Resources\u003E\r\n        \u003CStyle TargetType=\u0022Button\u0022\u003E\r\n            \u003CSetter Property=\u0022Background\u0022 Value=\u0022#718792\u0022 /\u003E\r\n            \u003CSetter Property=\u0022Padding\u0022 Value=\u00225\u0022 /\u003E\r\n            \u003CSetter Property=\u0022BorderBrush\u0022 Value=\u0022#1c313a\u0022 /\u003E\r\n            \u003CSetter Property=\u0022Foreground\u0022 Value=\u0022White\u0022 /\u003E\r\n        \u003C/Style\u003E\r\n        \u003CStyle TargetType=\u0022local:InputWithLabel\u0022\u003E\r\n            \u003CSetter Property=\u0022Margin\u0022 Value=\u002210, 5, 10, 5\u0022 /\u003E\r\n            \u003CSetter Property=\u0022Foreground\u0022 Value=\u0022White\u0022/\u003E\r\n        \u003C/Style\u003E\r\n        \u003CStyle TargetType=\u0022TextBlock\u0022\u003E\r\n            \u003CSetter Property=\u0022FontSize\u0022 Value=\u002215\u0022 /\u003E\r\n            \u003CSetter Property=\u0022Foreground\u0022 Value=\u0022White\u0022/\u003E\r\n        \u003C/Style\u003E\r\n    \u003C/Window.Resources\u003E\r\n    \u003CGrid\u003E\r\n        \u003CTabControl Background=\u0022#455a64\u0022 \u003E\r\n            \u003CTabControl.Resources\u003E\r\n                \u003CStyle TargetType=\u0022{x:Type TabItem}\u0022\u003E\r\n                    \u003CSetter Property=\u0022HeaderTemplate\u0022\u003E\r\n                        \u003CSetter.Value\u003E\r\n                            \u003CDataTemplate\u003E\r\n                                \u003CTextBlock Text=\u0022{TemplateBinding Content}\u0022 Height=\u002235\u0022 Width=\u0022110\u0022 \r\n                                           FontSize=\u002215\u0022/\u003E\r\n                            \u003C/DataTemplate\u003E\r\n                        \u003C/Setter.Value\u003E\r\n                    \u003C/Setter\u003E\r\n                    \u003CSetter Property=\u0022Padding\u0022 Value=\u00223\u0022 /\u003E\r\n                \u003C/Style\u003E\r\n            \u003C/TabControl.Resources\u003E\r\n            \u003CTabItem Header=\u0022Products\u0022\u003E\r\n                \u003CDataGrid x:Name=\u0022productsGrid\u0022 FontSize=\u002214\u0022 Margin=\u002210\u0022 \r\n                          CommandManager.PreviewCanExecute=\u0022productsGrid_PreviewCanExecute\u0022 /\u003E\r\n            \u003C/TabItem\u003E\r\n            \u003CTabItem Header=\u0022Add product\u0022 \u003E\r\n                \u003Clocal:AddProduct Margin=\u002210\u0022/\u003E\r\n            \u003C/TabItem\u003E\r\n        \u003C/TabControl\u003E\r\n    \u003C/Grid\u003E\r\n\u003C/Window\u003E",
+      "name": "code"
+    },
+    { "props": [], "content": "Obs\u0142uga interakcji z widokami", "name": "header" },
+    {
+      "props": [],
+      "content": "Dodajmy teraz obs\u0142ug\u0119 interakcji z widokami zacznijmy od InputWithLabel, kt\u00F3ra udost\u0119pnia dwie publiczne w\u0142a\u015Bciwo\u015Bci typu string LabelContent i InputContent oraz funkcj\u0119 Clear pozwalaj\u0105c\u0105 wyczy\u015Bci\u0107 wprowadzone dane. Ca\u0142o\u015B\u0107 powinna prezentowa\u0107 si\u0119 jak na listingu 10.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "    public partial class InputWithLabel : UserControl\r\n    {\r\n        public InputWithLabel()\r\n        {\r\n            InitializeComponent();\r\n        }\r\n\r\n        public string LabelContent\r\n        {\r\n            set\r\n            {\r\n                label.Text = value;\r\n            }\r\n        }\r\n\r\n        public string InputContent =\u003E input.Text;\r\n\r\n        public void Clear()\r\n        {\r\n            input.Text = string.Empty;\r\n        }\r\n    }",
+      "name": "code"
+    },
+    {
+      "props": [],
+      "content": "Przechodz\u0105c do AddProduct musimy utworzy\u0107 obs\u0142ug\u0119 klikni\u0119cia przycisku zapisz. Zr\u00F3bmy to z pomoc\u0105 metody SaveItemClick, kt\u00F3ra na pocz\u0105tek sprawdza, czy wprowadzona cena jest zgodna z typem decimal, a nast\u0119pnie tworzy nowy produkt, pobiera instancj\u0119 naszego magazynu danych (ProductStorage) i dodaje utworzony produkt.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Na sam koniec czy\u015Bci wprowadzone dane i informuje u\u017Cytkownika o powodzeniu operacji za pomoc\u0105 okna typu MessageBox. Ca\u0142o\u015B\u0107 przedstawia listing 11.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "    public partial class AddProduct : UserControl\r\n    {\r\n        public AddProduct()\r\n        {\r\n            InitializeComponent();\r\n        }\r\n\r\n        private void SaveItemClick(object sender, RoutedEventArgs e)\r\n        {\r\n            if (!decimal.TryParse(price.InputContent, out decimal priceValue))\r\n            {\r\n                MessageBox.Show(\u0022Price needs to be a decimal number\u0022, \u0022Invalid price value\u0022,\r\n                     MessageBoxButton.OK, MessageBoxImage.Error);\r\n                return;\r\n            }\r\n            var newProduct = new Product(name.InputContent, desc.InputContent, priceValue);\r\n\r\n            ProductsStorage.GetInstance().Add(newProduct);\r\n\r\n            name.Clear();\r\n            desc.Clear();\r\n            price.Clear();\r\n\r\n            MessageBox.Show(\u0022Item has been saved\u0022, \u0022Item added\u0022,\r\n                MessageBoxButton.OK, MessageBoxImage.Information);\r\n        }\r\n    }",
+      "name": "code"
+    },
+    {
+      "props": [],
+      "content": "Pozosta\u0142o nam zaprogramowa\u0107 dzia\u0142anie g\u0142\u00F3wnego okna. Zacznijmy od dodania dw\u00F3ch p\u00F3l \u2013 kolekcji produkt\u00F3w i przechowuj\u0105cego referencj\u0119 do naszego magazynu. Pola te inicjalizujemy w konstruktorze okna, a nast\u0119pnie rejestrujemy okno jako subskrybenta magazynu i przypisujemy do \u017Ar\u00F3d\u0142a DataGridu pobrane z magazynu produkty.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "public partial class MainWindow : Window, Observer\r\n    {\r\n        ObservableCollection\u003CProduct\u003E _products;\r\n        ProductsStorage _productsStorage;\r\n\r\n        public MainWindow()\r\n        {\r\n            InitializeComponent();\r\n            _productsStorage = ProductsStorage.GetInstance();\r\n            _productsStorage.Register(this);\r\n\r\n            _products = new ObservableCollection\u003CProduct\u003E(_productsStorage.Get());\r\n            productsGrid.ItemsSource = _products;\r\n\r\n        }",
+      "name": "code"
+    },
+    {
+      "props": [],
+      "content": "Kolejnym krokiem b\u0119dzie zaimplementowanie interfejsu Observer. W tym celu stw\u00F3rzmy funkcj\u0119 Update przyjmuj\u0105c\u0105 jeden argument. Na sam pocz\u0105tek sprawd\u017Amy, czy argument nie jest nullem, je\u017Celi si\u0119 nim oka\u017Ce sko\u0144czmy dzia\u0142anie funkcji. W innym przypadku przypiszemy argument jako instancj\u0119 klasy UpdateArgs do zmiennej updateArgs. Nast\u0119pnie utw\u00F3rzmy instrukcj\u0119 switch i jako warunek podajmy w\u0142a\u015Bciwo\u015B\u0107 Operation zmiennej updateArgs. ",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "W przypadku operacji Add dodajemy do lokalnej listy produkt\u00F3w otrzymany przedmiot (znajduj\u0105cy si\u0119 we w\u0142a\u015Bciwo\u015Bci Item). Natomiast w przypadku operacji Remove go usuwamy.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "        public void Update(object arg)\r\n        {\r\n            if (arg is null)\r\n                return;\r\n\r\n            var updateArg = (arg as UpdateArgs\u003CProduct\u003E);\r\n\r\n            switch (updateArg.Operation)\r\n            {\r\n                case OperationType.Add:\r\n                    _products.Add(updateArg.Item);\r\n                    break;\r\n                case OperationType.Remove:\r\n                    _products.Remove(updateArg.Item);\r\n                    break;\r\n            }\r\n        }",
+      "name": "code"
+    },
+    {
+      "props": [],
+      "content": "Ostatnie czym si\u0119 zajmiemy to obs\u0142uga usuwania obiektu z DataGridu (wystarczy nacisn\u0105\u0107 przycisk delete na zaznaczony obiekt) za pomoc\u0105 funkcji obs\u0142uguj\u0105cej zdarzenie PreviewCanExecute. W funkcji tej sprawd\u017Amy, czy przekazana w argumentach zdarzenia komenda jest komend\u0105 usuni\u0119cia, a nast\u0119pnie zapiszmy w zmiennej prod zaznaczony przedmiot. ",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Obs\u0142ug\u0119 usuwania stw\u00F3rzmy w osobnej funkcji o nazwie DeleteProduct przyjmuj\u0105cej jeden argument \u2013 referencj\u0119 do obiektu klasy Product. W niej zaprogramujmy wy\u015Bwietlenie MessageBoxa z pro\u015Bb\u0105 o potwierdzenie usuni\u0119cia i w przypadku twierdz\u0105cej odpowiedzi usu\u0144my przedmiot z magazynu (nie musimy aktualizowa\u0107 kolekcji obiekt\u00F3w, gdy\u017C magazyn i tak nas, jako subskrybenta poinformuje o zmianie poprzez wywo\u0142anie metody Update, w kt\u00F3rej zapisali\u015Bmy obs\u0142ug\u0119 usuni\u0119cia).",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Zapiszmy wywo\u0142anie tej funkcji w obs\u0142udze zdarzenie i okre\u015Blmy zdarzenia jako obs\u0142u\u017Cone (w innym przypadku przedmiot z widoku zostanie usuni\u0119ty nawet wtedy, gdy u\u017Cytkownik anuluje usuni\u0119cie) poprzez przypisanie w polu Handled argumentu zdarzenia warto\u015Bci true. Gotowy kod przedstawia listing 14.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "       private void productsGrid_PreviewCanExecute(object sender, CanExecuteRoutedEventArgs e)\r\n        {\r\n            if (e.Command == DataGrid.DeleteCommand)\r\n            {\r\n                var prod = productsGrid.SelectedItem as Product;\r\n                DeleteProd(prod);\r\n                e.Handled = true;              \r\n            }\r\n        }\r\n        private void DeleteProd(Product prod)\r\n        {\r\n            if (MessageBox.Show(\u0022Would you like to delete \u0022 \u002B\r\n                    $\u0022{prod.Name}\u0022,\r\n                    \u0022Confirm Delete\u0022, MessageBoxButton.YesNo, MessageBoxImage.Question)\r\n                    == MessageBoxResult.Yes)\r\n            {\r\n                _productsStorage.Remove(prod.Id);\r\n            }\r\n        }",
+      "name": "code"
+    },
+    { "props": [], "content": "Prezentacja wynik\u00F3w", "name": "header" },
+    {
+      "props": [],
+      "content": "Je\u017Celi wszystko przebieg\u0142o pomy\u015Blnie powinni\u015Bmy otrzyma\u0107 w pe\u0142ni dzia\u0142aj\u0105c\u0105 aplikacj\u0119 (rys. 1 i rys. 2) wykorzystuj\u0105c\u0105 ton\u0119 tzw. \u201Ecode behind\u201D, czyli kodu znajduj\u0105cego si\u0119 \u201Eza widokiem\u201D \u2013 w klasie wskazanej w atrybucie x:Class okna/kontrolek. W nast\u0119pnych wpisach zgodnie z zasadami wzorca MVVM postaramy si\u0119 przenie\u015B\u0107 ca\u0142y ten kod w obszary nieb\u0119d\u0105ce cz\u0119\u015Bci\u0105 widoku.",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "alt", "content": "Widok okna g\u0142\u00F3wnego programu" }],
+      "content": "mvvm01.png",
+      "name": "img"
+    },
+    {
+      "props": [
+        { "name": "alt", "content": "Widok okna z otwart\u0105 zak\u0142adk\u0105 dodaj produkt" }
+      ],
+      "content": "mvvm02.png",
+      "name": "img"
+    }
+  ]
+}
