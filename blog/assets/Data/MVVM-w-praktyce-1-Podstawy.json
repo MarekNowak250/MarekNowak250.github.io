@@ -1,0 +1,143 @@
+{
+  "title": "MVVM w praktyce: 1 Podstawy",
+  "date": "19/04/2022 10:00",
+  "lastEditDate": "19/04/2022 10:04",
+  "content": [
+    { "props": [], "content": "ModelViewViewModel", "name": "header" },
+    {
+      "props": [],
+      "content": "Jak mo\u017Cemy zauwa\u017Cy\u0107 w nazwie wzorzec ten sk\u0142ada si\u0119 z trzech warstw: modelu, widoku i modelu widoku. Jego zadaniem jest oddzielenie logiki biznesowej od warstwy prezentacji, co w d\u0142u\u017Cszej perspektywie znacznie u\u0142atwi utrzymywanie i modyfikacj\u0119 kodu oraz tworzenie test\u00F3w jednostkowych i w zwi\u0105zku z tym, \u017Ce umo\u017Cliwia tworzenie widoku niezale\u017Cnie od logiki pozwala na niezale\u017Cn\u0105 prac\u0119 projektant\u00F3w interfejsu i programist\u00F3w.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Warstwa widoku nie komunikuje si\u0119 bezpo\u015Brednio z modelem, lecz z modelem widoku, kt\u00F3ry z kolei komunikuje si\u0119 z modelem.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "// Ten wpis jest kontynuacj\u0105 serii MVVM w praktyce, zaleca si\u0119 przeczytanie w pierwszej kolejno\u015Bci poprzedniego posta.",
+      "name": "info"
+    },
+    { "props": [], "content": "Model", "name": "header" },
+    {
+      "props": [],
+      "content": "Klasy modelu reprezentuj\u0105 dane i logik\u0119 biznesow\u0105, s\u0105 swoistym no\u015Bnikiem danych.",
+      "name": "paragraph"
+    },
+    { "props": [], "content": "View", "name": "header" },
+    {
+      "props": [],
+      "content": "View czyli widok to warstwa odpowiedzialna za komunikacj\u0119 z u\u017Cytkownikiem w WPF jest to kod XAML tworz\u0105cy interfejs u\u017Cytkownika (okna, kontrolki).  Z widokiem modelu porozumiewa si\u0119 poprzez wi\u0105zanie \u2013 mechanizm pozwalaj\u0105cy na automatyczn\u0105 aktualizacj\u0119 widoku (oraz poinformowanie modelu widoku o np. naci\u015Bni\u0119ciu przycisku). ",
+      "name": "paragraph"
+    },
+    { "props": [], "content": "ViewModel", "name": "header" },
+    {
+      "props": [],
+      "content": "ViewModel to warstwa po\u015Brednia, kt\u00F3ra stanowi kontekst danych dla widoku. Posiada w sobie referencje do obiekt\u00F3w modelu, kt\u00F3rego dane przetwarza i udost\u0119pnia jako w\u0142a\u015Bciwo\u015Bci do \u201Ewi\u0105zania\u201D. Posiada tak\u017Ce obs\u0142ug\u0119 reakcji na dzia\u0142ania zachodz\u0105ce w widoku (np. na klikni\u0119cie przycisku). W celu poprawnej obs\u0142ugi wi\u0105zania musi implementowa\u0107 interfejs IPropertyChanged. Co wa\u017Cne warstwa ta jest ca\u0142kowicie niezale\u017Cna od widoku \u2013 nie powinna nic o nim \u201Ewiedzie\u0107\u201D i dzia\u0142a\u0107 ca\u0142kowicie autonomicznie (np. usuni\u0119cie widok\u00F3w nie powinno w \u017Caden spos\u00F3b wp\u0142yn\u0105\u0107 na ViewModel). ",
+      "name": "paragraph"
+    },
+    { "props": [], "content": "Czas zacz\u0105\u0107 modyfikacje!", "name": "header" },
+    {
+      "props": [],
+      "content": "Wr\u00F3\u0107my do wcze\u015Bniej przygotowanej aplikacji z list\u0105 produkt\u00F3w, kt\u00F3r\u0105 teraz zaimplementujemy zgodnie z duchem wzorca MVVM.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Na sam pocz\u0105tek oddzielmy warstw\u0119 modelu \u2013 utw\u00F3rzmy folder Model i przenie\u015Bmy do niego poszczeg\u00F3lne wcze\u015Bniej stworzone klasy (Product, ProductStorage itd.).",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Nast\u0119pnie stw\u00F3rzmy folder ViewModel i utw\u00F3rzmy w nim klas\u0119 MainWindowViewModel, a na koniec do folderu View przenie\u015Bmy wszystkie obiekty powi\u0105zane z interfejsem u\u017Cytkownika (obiekty z rozszerzeniem .xaml poza App.xaml). Musimy te\u017C zmieni\u0107 warto\u015B\u0107 StartupUri znajduj\u0105c\u0105 si\u0119 w App.xaml z MainWindow.xaml na /View/MainWindow.xaml.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Ostatecznie powinni\u015Bmy otrzyma\u0107 nast\u0119puj\u0105c\u0105 hierarchi\u0119 folder\u00F3w:",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "alt", "content": "Hierarchia katalog\u00F3w po modyfikacjach" }],
+      "content": "mvvm11.png",
+      "name": "img"
+    },
+    {
+      "props": [],
+      "content": "Uzupe\u0142nijmy teraz model widoku dla g\u0142\u00F3wnego okna zacznijmy od dodania w\u0142a\u015Bciwo\u015Bci z kolekcj\u0105 w postaci ObservableCollection o nazwie Products, kt\u00F3rej ju\u017C u\u017Cywali\u015Bmy wcze\u015Bniej. Jak mogli\u015Bmy zauwa\u017Cy\u0107 z u\u017Cyciem obiektu tej klasy jako \u017Ar\u00F3d\u0142a danych w poprzedniej wersji ju\u017C wtedy dane \u201Emagicznie\u201D si\u0119 od\u015Bwie\u017Ca\u0142y przy zmianie kolekcji.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Jest to zas\u0142uga implementacji interfejsu ICollectionChanged, kt\u00F3ry automatycznie informuje, w naszym przypadku widok - o zmianach. Gdyby\u015Bmy u\u017Cyli obiektu klasy List za ka\u017Cdym razem musieliby\u015Bmy od\u015Bwie\u017Ca\u0107 \u017Ar\u00F3d\u0142o danych. ",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Dodajmy tak\u017Ce pole typu ProductStorage o nazwie _pStorage i zainicjalizujmy je w konstruktorze. Nast\u0119pnie zainicjalizujmy nasz\u0105 kolekcj\u0119 jako argument podaj\u0105c dane uzyskane za pomoc\u0105 metody Get naszego \u201Emagazynu\u201D.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Na koniec zaimplementujmy interfejs Observer przenosz\u0105c metod\u0119 Update z okna widoku i rejestruj\u0105c obiekt modelu widoku jako obserwatora obiektu _pStorage. Gotowa klasa MainWindowViewModel powinna prezentowa\u0107 si\u0119 jak poni\u017Cej:",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "    public class MainWindowViewModel: Observer\r\n    {\r\n        public ObservableCollection\u003CProduct\u003E Products { get; set; }\r\n        private ProductsStorage _pStorage;\r\n\r\n        public MainWindowViewModel()\r\n        {\r\n            _pStorage = ProductsStorage.GetInstance();\r\n            Products = new ObservableCollection\u003CProduct\u003E(_pStorage.Get());\r\n            _pStorage.Register(this);\r\n        }\r\n\r\n        public void Update(object arg)\r\n        {\r\n            if (arg is null)\r\n                return;\r\n\r\n            var updateArg = (arg as UpdateArgs\u003CProduct\u003E);\r\n\r\n            switch (updateArg.Operation)\r\n            {\r\n                case OperationType.Update:\r\n                    var fProd = Products.FirstOrDefault(p =\u003E p.Id == updateArg.Item.Id);\r\n                    if (fProd != null)\r\n                        fProd = updateArg.Item;\r\n                    break;\r\n                case OperationType.Add:\r\n                    Products.Add(updateArg.Item);\r\n                    break;\r\n                case OperationType.Remove:\r\n                    Products.Remove(updateArg.Item);\r\n                    break;\r\n            }\r\n        }\r\n    }",
+      "name": "code"
+    },
+    { "props": [], "content": "Zmiana widoku", "name": "header" },
+    {
+      "props": [],
+      "content": "Maj\u0105c gotowy model widoku mo\u017Cemy usun\u0105\u0107 niepotrzebny kod z okna g\u0142\u00F3wnego \u2013 ca\u0142y dodany uprzednio opr\u00F3cz metody productsGrid_PreviewCanExecute i zwi\u0105zanej z ni\u0105 DeleteProd. Dodatkowo w tej drugiej musimy odwo\u0142a\u0107 si\u0119 do w\u0142a\u015Bciwo\u015Bci ItemSource (kt\u00F3r\u0105 zaraz ustawimy jako wi\u0105zanie w widoku) jako ObservableCollection i usun\u0105\u0107 produkt bezpo\u015Brednio z niej.",
+      "name": "paragraph"
+    },
+    {
+      "props": [],
+      "content": "Zawarto\u015B\u0107 powinna wygl\u0105da\u0107 jak poni\u017Cej:",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "csharp" }],
+      "content": "    public partial class MainWindow : Window\r\n    {\r\n        public MainWindow()\r\n        {\r\n            InitializeComponent();\r\n        }\r\n\r\n        private void productsGrid_PreviewCanExecute(object sender, CanExecuteRoutedEventArgs e)\r\n        {\r\n            if (e.Command == DataGrid.DeleteCommand)\r\n            {\r\n                var prod = productsGrid.SelectedItem as Product;\r\n                DeleteProd(prod);\r\n                e.Handled = true;              \r\n            }\r\n        }\r\n\r\n        private void DeleteProd(Product prod)\r\n        {\r\n            if (MessageBox.Show(\u0022Would you like to delete \u0022 \u002B\r\n                    $\u0022{prod.Name}\u0022,\r\n                    \u0022Confirm Delete\u0022, MessageBoxButton.YesNo, MessageBoxImage.Question)\r\n                    == MessageBoxResult.Yes)\r\n            {\r\n                (productsGrid.ItemsSource as ObservableCollection\u003CProduct\u003E).Remove(prod);\r\n            }\r\n        }\r\n    }",
+      "name": "code"
+    },
+    {
+      "props": [],
+      "content": "Nast\u0119pnie do kontrolki DataGrid dodajmy przypiszmy ItemSource=\u201D{Binding Products}\u201D i dodajmy obiekt klasy modelu widoku jako kontekst danych dla okna (listing 3).",
+      "name": "paragraph"
+    },
+    {
+      "props": [{ "name": "lang", "content": "xml" }],
+      "content": "\u003CWindow x:Class=\u0022ProductApp.MainWindow\u0022\r\n        xmlns=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0022\r\n        xmlns:x=\u0022http://schemas.microsoft.com/winfx/2006/xaml\u0022\r\n        xmlns:d=\u0022http://schemas.microsoft.com/expression/blend/2008\u0022\r\n        xmlns:mc=\u0022http://schemas.openxmlformats.org/markup-compatibility/2006\u0022\r\n        xmlns:local=\u0022clr-namespace:ProductApp\u0022\r\n        xmlns:vm=\u0022clr-namespace:ProductApp.ViewModel\u0022\r\n        mc:Ignorable=\u0022d\u0022\r\n        Title=\u0022MainWindow\u0022 Height=\u0022600\u0022 Width=\u0022971\u0022 Background=\u0022#1c313a\u0022\u003E\r\n    \u003CWindow.Resources\u003E\r\n        \u003C!\u2014- style dla kontrolek ---\u003E\r\n    \u003C/Window.Resources\u003E\r\n    \u003CWindow.DataContext\u003E\r\n        \u003Cvm:MainWindowViewModel/\u003E\r\n    \u003C/Window.DataContext\u003E\r\n    \u003CGrid\u003E\r\n        \u003CTabControl Background=\u0022#455a64\u0022 \u003E\r\n            \u003CTabControl.Resources\u003E\r\n            \u003C!\u2014- style dla TabControl ---\u003E\r\n            \u003C/TabControl.Resources\u003E\r\n            \u003CTabItem Header=\u0022Products\u0022\u003E\r\n                \u003CDataGrid x:Name=\u0022productsGrid\u0022 FontSize=\u002214\u0022 Margin=\u002210\u0022 \r\n                                  ItemsSource=\u0022{Binding Products}\u0022                         \r\n                                 CommandManager.PreviewCanExecute=\u0022productsGrid_PreviewCanExecute\u0022 /\u003E\r\n            \u003C/TabItem\u003E\r\n            \u003CTabItem Header=\u0022Add product\u0022 \u003E\r\n                \u003Clocal:AddProduct Margin=\u002210\u0022/\u003E\r\n            \u003C/TabItem\u003E\r\n        \u003C/TabControl\u003E\r\n    \u003C/Grid\u003E\r\n\u003C/Window\u003E\r\n",
+      "name": "code"
+    },
+    {
+      "props": [],
+      "content": "W tym momencie powinni\u015Bmy mie\u0107 aplikacj\u0119, kt\u00F3ra pozornie niczym nie r\u00F3\u017Cni si\u0119 od poprzedniej wersji (a tak przynajmniej wygl\u0105da to ze strony u\u017Cytkownika). Mimo tego uda\u0142o nam przenie\u015B\u0107 cz\u0119\u015B\u0107 kodu z okna g\u0142\u00F3wnego do modelu widoku.",
+      "name": "paragraph"
+    },
+    {
+      "props": [
+        {
+          "name": "alt",
+          "content": "Okno g\u0142\u00F3wne po zmianach - brak zmian w dzia\u0142aniu i wygl\u0105dzie"
+        }
+      ],
+      "content": "mvvm12.png",
+      "name": "img"
+    },
+    {
+      "props": [],
+      "content": "To ju\u017C jest koniec nie ma ju\u017C nic(zego wi\u0119cej)",
+      "name": "header"
+    },
+    {
+      "props": [],
+      "content": "Uda\u0142o si\u0119 nam dzisiaj cz\u0119\u015Bciowo uniezale\u017Cni\u0107 widok od modelu i szczeg\u00F3\u0142\u00F3w logiki. W kolejnym wpisie poka\u017C\u0119 jak przenie\u015B\u0107 pozosta\u0142\u0105 cz\u0119\u015B\u0107 do modelu widoku tym samym ca\u0142kowicie izoluj\u0105c widok. Nauczymy si\u0119 wi\u0119c jak przekazywa\u0107 naci\u015Bni\u0119cia przycisku do modelu widoku i jak wi\u0105za\u0107 dwustronnie pojedyncze w\u0142a\u015Bciwo\u015Bci z widokiem (do czego u\u017Cyjemy interfejsu IPropertyChanged).",
+      "name": "paragraph"
+    }
+  ]
+}
