@@ -1,19 +1,5 @@
 [
   {
-    "id": "MVVM-w-praktyce-0-budowa-bazowej-aplikacji",
-    "type": "WPF",
-    "date": "18/04/2022 12:32",
-    "title": "MVVM w praktyce: 0 budowa bazowej aplikacji",
-    "content": "Wzorzec ModelView View Model mimo wzgl\u0119dnie niskiego stopnia skomplikowania mo\u017Ce wyda\u0107 si\u0119 ci\u0119\u017Cki do ca\u0142kowitego zrozumienia w oderwaniu od praktycznego przyk\u0142adu. Dodatkowo w celu podkre\u015Blenia r\u00F3\u017Cnic i korzy\u015Bci zdecydowa\u0142em, \u017Ce najleps..."
-  },
-  {
-    "id": "MVVM-w-praktyce-1-Podstawy",
-    "type": "WPF",
-    "date": "19/04/2022 10:00",
-    "title": "MVVM w praktyce: 1 Podstawy",
-    "content": "Jak mo\u017Cemy zauwa\u017Cy\u0107 w nazwie wzorzec ten sk\u0142ada si\u0119 z trzech warstw: modelu, widoku i modelu widoku. Jego zadaniem jest oddzielenie logiki biznesowej od warstwy prezentacji, co w d\u0142u\u017Cszej perspektywie znacznie u\u0142atwi utrzymywanie i mody..."
-  },
-  {
     "id": "FirstvsSingle",
     "type": "EF",
     "date": "28/10/2022 06:17",
