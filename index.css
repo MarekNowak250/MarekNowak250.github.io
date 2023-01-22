@@ -6,6 +6,8 @@
 body {
   background-color: #6796bd;
   overflow-x: hidden;
+  background-color: white;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='100%25' width='100%25'%3E%3Cdefs%3E%3Cpattern id='doodad' width='89' height='89' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(140)'%3E%3Crect width='100%25' height='100%25' fill='rgba(247, 250, 252,1)'/%3E%3Cpath d='M20 20L20 0L20 40zM40 20L40 0L40 40z' fill='rgba(237, 242, 247,1)' filter='url(%23filter-doodad-1)'/%3E%3Cpath d='M18 20L20 0L20 40zM38 20L40 0L40 40zM0-20L5 0L0 20zM0 20L5 40L0 60zM20-20L25 0L20 20zM20 20L25 40L20 60z' fill='rgba(237, 242, 247,1)' filter='url(%23filter-doodad-2)'/%3E%3C/pattern%3E%3Cfilter id='filter-doodad-1'%3E%3CfeTurbulence baseFrequency='2' numOctaves='2' type='fractalNoise' result='result1'/%3E%3CfeDisplacementMap in2='result1' scale='1' result='result2' xChannelSelector='R' in='SourceGraphic'/%3E%3CfeComposite in2='result2' in='SourceGraphic' operator='atop' result='fbSourceGraphic'/%3E%3C/filter%3E%3Cfilter id='filter-doodad-2'%3E%3CfeTurbulence baseFrequency='2' numOctaves='2' type='fractalNoise' result='result1'/%3E%3CfeDisplacementMap in2='result1' scale='2' result='result2' xChannelSelector='R' in='SourceGraphic'/%3E%3CfeComposite in2='result2' in='SourceGraphic' operator='atop' result='fbSourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Crect fill='url(%23doodad)' height='200%25' width='200%25'/%3E%3C/svg%3E ");
 }
 
 main {
@@ -73,18 +75,18 @@ a {
 /* end of first section*/
 
 .secondSection {
-  min-height: 91vh;
-  padding-bottom: 1.5vh;
+  min-height: 97vh;
+  color: black;
 }
 
 .secondSection > h2 {
-  max-width: 1400px;
-  width: 80vw;
+  max-width: calc(1400px + 3rem + 4px);
+  width: calc(80vw + 3rem + 4px);
   margin: auto;
-  margin-top: 8vh;
-  margin-bottom: 2rem;
+  margin-top: 4vh;
+  margin-bottom: 2vh;
   font-family: Lato, Times, serif;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 .projectArticle {
@@ -95,11 +97,15 @@ a {
   border-radius: 5px;
   margin: 4vh auto;
   padding: 1rem 1.5rem;
-  border: 2px solid black;
+  border: 2px solid #1b8e2d;
+}
+
+.secondSection .projectArticle:first-of-type {
+  margin: 0px auto 4vh auto;
 }
 
 .projectArticle > h3 {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #1b8e2d;
   margin-bottom: 1rem;
 }
 
