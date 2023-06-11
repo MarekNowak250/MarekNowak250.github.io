@@ -1,0 +1,89 @@
+h1,
+h2,
+h3,
+h4 {
+  all: unset;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  padding: 40px 0px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.main_section {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  border-top: 2px solid black;
+}
+
+.main_section-header {
+  border-right: 2px solid black;
+  padding: 24px 16px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.main_section-content {
+  padding: 24px 24px;
+  text-align: justify;
+}
+
+.personal_section {
+  border-top: 0px;
+}
+
+.personal_content {
+  padding-top: 8px;
+  padding-bottom: 16px;
+}
+
+.personal_article header {
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+.personal_article div {
+  font-size: 0.8rem;
+}
+
+.personal_article a {
+  color: black;
+}
+
+.experience_article-header {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.experience_article-section {
+  font-size: 0.8rem;
+  padding-left: 16px;
+  padding-top: 16px;
+}
+
+.experience_article-section-header {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.experience_article:not(:last-child) {
+  padding-bottom: 16px;
+}
+
+.experience_article:not(:first-child)::before {
+  content: "";
+  display: block;
+  border-top: 2px solid black;
+  margin-left: -24px;
+  padding-bottom: 24px;
+}
+.int_proj-p {
+  margin: 0px;
+  font-size: 13px;
+}
