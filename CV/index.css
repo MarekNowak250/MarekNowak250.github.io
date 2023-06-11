@@ -17,6 +17,7 @@ body {
 
 .main_section {
   display: grid;
+  grid-template-areas: "heading content";
   grid-template-columns: 25% 75%;
   border-top: 2px solid black;
 }
@@ -86,4 +87,23 @@ body {
 .int_proj-p {
   margin: 0px;
   font-size: 13px;
+}
+
+@media (width <= 750px) {
+  .main_section {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "heading"
+      "content";
+  }
+
+  body {
+    padding: 0px;
+  }
+
+  .main_section-content {
+    padding: 24px 24px;
+    padding-top: 0px;
+    text-align: justify;
+  }
 }
