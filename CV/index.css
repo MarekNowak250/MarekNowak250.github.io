@@ -10,21 +10,19 @@ html {
 }
 
 body {
-  padding: 40px 0px;
-  max-width: 1000px;
+  max-width: 800px;
   margin: auto;
 }
 
 .main_section {
-  display: grid;
+  display: block;
   grid-template-areas: "heading content";
-  grid-template-columns: 25% 75%;
   border-top: 2px solid black;
+  padding: 24px 0 0 0;
 }
 
 .main_section-header {
-  border-right: 2px solid black;
-  padding: 24px 16px;
+  padding: 0px 8px;
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -35,6 +33,7 @@ body {
 }
 
 .personal_section {
+  margin-left: -16px;
   border-top: 0px;
 }
 
@@ -44,13 +43,13 @@ body {
 }
 
 .personal_article header {
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   font-weight: 400;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .personal_article div {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .personal_article a {
@@ -59,13 +58,13 @@ body {
 
 .experience_article-header {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .experience_article-section {
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding-left: 16px;
-  padding-top: 16px;
+  padding-top: 8px;
 }
 
 .experience_article-section-header {
@@ -74,19 +73,23 @@ body {
 }
 
 .experience_article:not(:last-child) {
-  padding-bottom: 16px;
+  padding-bottom: 8px;
 }
 
 .experience_article:not(:first-child)::before {
   content: "";
   display: block;
-  border-top: 2px solid black;
-  margin-left: -24px;
-  padding-bottom: 24px;
 }
+
 .int_proj-p {
   margin: 0px;
-  font-size: 13px;
+  font-size: 1rem;
+}
+
+.technologies_list-item {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
 }
 
 @media (width <= 750px) {
