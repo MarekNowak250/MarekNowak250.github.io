@@ -45,9 +45,9 @@ body {
 }
 
 .navigationButtonsAnim {
-  transition: all 0.35s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .navigationButtonsAnim:hover {
-  transform: scale(0.95);
+  transform: scale(1.05);
 }

@@ -1,17 +1,72 @@
+:root {
+  --text: #e7eeed;
+  --background: #090c0c;
+  --primary: #566976;
+  --secondary: #0d0d12;
+  --accent: #636688;
+  --background-light: #f3f6f6;
+  --text-light: #111817;
+  --primary-ligth: #899ca9;
+  --secondary-light: #ededf2;
+  --accent-light: #777a9c;
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
+@import url("https://fonts.googleapis.com/css?family=Lato:700|Lato:400");
+
 body {
-  background-color: #6796bd;
+  font-family: "Lato";
+  font-weight: 400;
+  color: var(--text-light);
   overflow-x: hidden;
-  background-color: #f2f2f2;
+  background-color: var(--background-light);
 }
 
 main {
   padding: 0;
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Lato";
+  font-weight: 700;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+} /* 16px */
+
+h1 {
+  font-size: 5.652rem; /* 67.36px */
+}
+
+h2 {
+  font-size: 3.997rem; /* 64px */
+}
+
+h3 {
+  font-size: 2.827rem; /* 45.28px */
+}
+
+h4 {
+  font-size: 1.999rem; /* 32px */
+}
+
+h5 {
+  font-size: 1.414rem; /* 22.56px */
+}
+
+small {
+  font-size: 0.75rem; /* 12px */
 }
 
 a {
@@ -22,28 +77,35 @@ a {
 .firstSection {
   background-color: var(--mainColor);
   height: 100vh;
-  font-size: 1.3rem;
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: 10vw 80vw 10vw;
-  font-family: Lato, Times, serif;
+  color: var(--text);
+  font-size: 1.414rem;
 }
 
 .linksContainer {
   grid-row: 1;
   grid-column: 3;
+  max-height: 80px;
   justify-self: end;
   display: flex;
+  color: var(--text);
+  background-color: var(--secondary);
 }
 
 .promoLinks {
   padding: 15px 10px;
-  height: 20px;
   margin: 1.5vw 0px;
+  cursor: pointer;
 }
 
 .promoLinks:last-of-type {
   margin-right: 2vw;
+}
+
+.promoLinks:hover {
+  mix-blend-mode: color-dodge;
 }
 
 .gitlabIcon {
@@ -52,6 +114,10 @@ a {
   height: 20px;
   padding: 10px;
   grid-row: 1;
+}
+
+.gitlabIcon:hover {
+  mix-blend-mode: color-dodge;
 }
 
 .authorInfo {
@@ -64,39 +130,56 @@ a {
 }
 
 .authorName {
-  font-size: 3.4rem;
   margin-bottom: 10px;
 }
 
-.sentenceAfterName {
-  font-size: 2rem;
+.load-more {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  pointer-events: auto;
+  width: 60px;
+  height: 60px;
+  bottom: 0%;
+  left: 50%;
+  margin-bottom: 1rem;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: var(--text);
+  border-right-color: var(--text);
+  border-radius: 0 0 5px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  margin: 0px 0 1rem 0px;
+  z-index: 1000;
 }
+
+.load-more:hover {
+  mix-blend-mode: color-dodge;
+}
+
 /* end of first section*/
 
 .secondSection {
   min-height: 97vh;
-  color: black;
 }
 
-.secondSection > h2 {
+.secondSection-header {
   max-width: calc(1400px + 3rem + 4px);
   width: calc(80vw + 3rem + 4px);
   margin: auto;
   margin-top: 4vh;
-  margin-bottom: 2vh;
-  font-family: Lato, Times, serif;
-  font-size: 2rem;
+  margin-bottom: 2.4vh;
+  font-size: 2.827rem;
 }
 
 .projectArticle {
-  background-color: white;
-  color: black;
+  background-color: var(--background-light);
   width: 80vw;
   max-width: 1400px;
   border-radius: 5px;
   margin: 4vh auto;
   padding: 1rem 1.5rem;
-  border: 2px solid #1b8e2d;
+  border: 2px solid var(--accent-light);
 }
 
 .secondSection .projectArticle:first-of-type {
@@ -104,17 +187,56 @@ a {
 }
 
 .projectArticle > h3 {
-  border-bottom: 2px solid #1b8e2d;
+  font-size: 1.777rem;
+  border-bottom: 2px solid var(--accent-light);
   margin-bottom: 1rem;
 }
 
 .projectField {
   display: grid;
-  grid-template-columns: 6rem auto;
+  grid-template-columns: 140px auto;
   margin-top: 0.2rem;
   text-align: justify;
 }
 
+.projectField-header {
+  font-size: 1.333rem; /* 21.28px */
+}
+
+.projectField > a {
+  align-self: center;
+}
+
+.projectField > p {
+  align-self: center;
+}
+
 .projectField > a:focus-visible {
   outline: var(--mainColor) dashed 2px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  font-size: 0.75rem;
+
+  /* Position the tooltip */
+  position: absolute;
+  bottom: 0px;
+  text-align: left;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  color: var(--text);
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 80%;
+  }
+
+  .firstSection {
+    font-size: 1.999rem;
+  }
 }

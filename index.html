@@ -13,43 +13,56 @@
   <body>
     <main>
       <section class="firstSection" id="el">
-        <a
-          class="gitlabIcon navigationButtonsAnim"
-          href="https://gitlab.com/Phoenix510"
-          ><i class="icon-gitlab"></i
-        ></a>
+        <a class="gitlabIcon" href="https://gitlab.com/Phoenix510">
+          <i class="icon-gitlab"></i>
+        </a>
         <div class="linksContainer">
-          <a
-            class="promoLinks navigationButtonsAnim"
-            href="https://www.linkedin.com/in/krzaku250"
-            ><i class="icon-linkedin"></i
-          ></a>
-          <a
-            class="promoLinks navigationButtonsAnim"
-            href="mailto:marek.n6666@gmail.com"
-            ><i class="icon-mail"></i
-          ></a>
+          <a class="promoLinks" href="https://www.linkedin.com/in/krzaku250">
+            <i class="icon-linkedin"></i>
+          </a>
+          <a class="promoLinks" href="mailto:marek.n6666@gmail.com">
+            <i class="icon-mail"></i>
+          </a>
         </div>
 
         <div class="authorInfo">
           <div>
             <h1 class="authorName">Marek Nowak</h1>
-            <p class="sentenceAfterName">.NET Developer</p>
+            <h3>.NET Developer</h3>
           </div>
         </div>
+        <a class="load-more" href="#second_part"></a>
       </section>
-      <section class="secondSection">
-        <h2>Projects</h2>
+      <section class="secondSection" id="second_part">
+        <h2 class="secondSection-header">Projects</h2>
+        <article class="projectArticle">
+          <h3>Web communicator demo (BLAZOR + REST API + WebSockets)</h3>
+          <div class="projectField">
+            <h4 class="projectField-header">Link:</h4>
+            <a href="https://gitlab.com/Phoenix510/rest_api-blazor_client-demo"
+              >https://gitlab.com/Phoenix510/rest_api-blazor_client-demo</a
+            >
+          </div>
+          <div class="projectField">
+            <h4 class="projectField-header">Description:</h4>
+            <p>
+              Allows to send and receive messages between registered users and
+              public messages visible by everyone. Messages are send through
+              http request, but all information (e.g. that you received new
+              message) are sent through web sockets.
+            </p>
+          </div>
+        </article>
         <article class="projectArticle">
           <h3>HTTP/1.1 Server</h3>
           <div class="projectField">
-            <h4>Link:</h4>
+            <h4 class="projectField-header">Link:</h4>
             <a href="https://gitlab.com/Phoenix510/basichttpserver"
               >https://gitlab.com/Phoenix510/basichttpserver</a
             >
           </div>
           <div class="projectField">
-            <h4>Description:</h4>
+            <h4 class="projectField-header">Description:</h4>
             <p>
               HTTP/1.1 Server for Windows and Linux. Supports GET, POST and
               OPTIONS methods.
@@ -57,25 +70,9 @@
           </div>
         </article>
         <article class="projectArticle">
-          <h3>System which allows to create accounts and posts</h3>
-          <div class="projectField">
-            <h4>Link:</h4>
-            <a href="https://gitlab.com/Phoenix510/sampleapi"
-              >https://gitlab.com/Phoenix510/sampleapi</a
-            >
-          </div>
-          <div class="projectField">
-            <h4>Description:</h4>
-            <p>
-              Simple system which contains two applications: RESTful API and
-              BLAZOR client. Allows to create accounts and posts.
-            </p>
-          </div>
-        </article>
-        <article class="projectArticle">
           <h3>Chrome extension for youtube videoplayer</h3>
           <div class="projectField">
-            <h4>Link:</h4>
+            <h4 class="projectField-header">Link:</h4>
             <a
               href="https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii"
             >
@@ -83,12 +80,13 @@
             >
           </div>
           <div class="projectField">
-            <h4>Description:</h4>
+            <h4 class="projectField-header">Description:</h4>
             <p>
-              Extension which allows you to manage video playback rate. Contains
-              simple controls integrated into youtube interface: slider and
-              numeric input. Also, there is possiblity to use a/+ and d/- keys
-              to change rate.
+              Chrome extension which allows to change youtube video playback
+              speed from 0 to 10, by custom step. The controls are integrated
+              with youtube player in form of: draggable bar below quality option
+              in player settings and by specified by user keys (by default '-'
+              or a' to subtract and '+' or 'd' to add)
             </p>
           </div>
         </article>
@@ -106,8 +104,8 @@
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0xffffff,
-          backgroundColor: 0x1c1c27,
+          color: 0x636688,
+          backgroundColor: 0x0d0d12,
           maxDistance: 19.0,
           spacing: 16,
         });

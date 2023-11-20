@@ -1,94 +1,125 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Programista korzystający głównie z platformy .NET."/>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../index.css">
-    <link rel="stylesheet" href="../css/fontello.css"/>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Programista korzystający głównie z platformy .NET."
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="../css/fontello.css" />
     <title>Marek Nowak</title>
-        <style>
-            .projectField {
-                grid-template-columns: 3.5rem auto;
-            }
-        </style>
-</head>
-<body>
+    <style>
+      .projectField {
+        grid-template-columns: 80px auto;
+      }
+    </style>
+  </head>
+  <body>
     <main>
-        <section class="firstSection" id="el">
-            <a class="gitlabIcon navigationButtonsAnim" href="https://gitlab.com/Phoenix510"><i class="icon-gitlab"></i></a>
-            <div class="linksContainer">
-                <a class="promoLinks navigationButtonsAnim" href="https://www.linkedin.com/in/krzaku250"><i class="icon-linkedin"></i></a>
-                <a class="promoLinks navigationButtonsAnim" href="mailto:marek.n6666@gmail.com"><i class="icon-mail"></i></a>
-            </div>
+      <section class="firstSection" id="el">
+        <a class="gitlabIcon" href="https://gitlab.com/Phoenix510">
+          <i class="icon-gitlab"></i>
+        </a>
+        <div class="linksContainer">
+          <a class="promoLinks" href="https://www.linkedin.com/in/krzaku250">
+            <i class="icon-linkedin"></i>
+          </a>
+          <a class="promoLinks" href="mailto:marek.n6666@gmail.com">
+            <i class="icon-mail"></i>
+          </a>
+        </div>
 
-            <div class="authorInfo">
-                <div>
-                    <h1 class="authorName">Marek Nowak</h1>
-                    <p class="sentenceAfterName">Programista .NET</p>
-                </div>
-            </div>
-        </section>
-        <section class="secondSection">
-            <h2>Moje projekty</h2>
-            <article class="projectArticle">
-                <h3>Serwer HTTP/1.1</h3>
-                <div class="projectField">
-                    <h4>Link:</h4>
-                    <a href="https://gitlab.com/Phoenix510/basichttpserver">https://gitlab.com/Phoenix510/basichttpserver</a>
-                </div>
-                <div class="projectField">
-                    <h4>Opis:</h4>
-                    <p>Prosty serwer HTTP/1.1 wspierający metody GET, POST i OPTIONS oraz działający na systemach operacyjnych z rodzin: Windows oraz Linux.</p>
-                </div>
-            </article>
-            <article class="projectArticle">
-                <h3>System pozwalający na tworzenie kont oraz wpisów</h3>
-                    <div class="projectField">
-                        <h4>Link:</h4>
-                        <a href="https://gitlab.com/Phoenix510/sampleapi">https://gitlab.com/Phoenix510/sampleapi</a>
-                    </div>
-                     <div class="projectField">
-                        <h4>Opis:</h4>
-                        <p>Prosty system składający się z dwóch aplikacji: RESTful API oraz prostego klienta utworzonego z pomocą frameworka
-                            BLAZOR. Pozwala na tworzenia kont oraz zostawianie przy ich pomocy wpisów - komentarzy.</p>
-                    </div>
-            </article>
-            <article class="projectArticle">
-                <h3>Wtyczka do przeglądarki Chrome pozwalająca zarządzać prędkością odtwarzania</h3>
-                <div class="projectField">
-                    <h4>Link:</h4>
-                    <a href="https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii">
-                        https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii</a>
-                </div>
-                <div class="projectField">
-                    <h4>Opis:</h4>
-                    <p>Wtyczka pozwalająca zarządzać prędkością odtwarzania filmów na platformie youtube. Posiada trzy możliwości kontroli
-                    poprzez klawisze a/+ oraz d/-, suwak oraz pole pozwalające wprowadzić żądaną wartość przyśpieszenia.</p>
-                </div>
-            </article>
-        </section>
-        <script src="../three.min.js"></script>
-        <script src="../vanta.net.min.js"></script>
-        <script>
-            VANTA.NET({
-                el: ".firstSection",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: true,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                color: 0xffffff,
-                backgroundColor: 0x1c1c27,
-                maxDistance: 19.00,
-                spacing: 16
-            })
-        </script>
+        <div class="authorInfo">
+          <div>
+            <h1 class="authorName">Marek Nowak</h1>
+            <h3>Programista .NET</h3>
+          </div>
+        </div>
+        <a class="load-more" href="#second_part"></a>
+      </section>
+      <section class="secondSection" id="second_part">
+        <h2 class="secondSection-header">Projekty</h2>
+        <article class="projectArticle">
+          <h3>Komunikator internetowy (BLAZOR + REST API + WebSockets)</h3>
+          <div class="projectField">
+            <h4 class="projectField-header">Link:</h4>
+            <a href="https://gitlab.com/Phoenix510/rest_api-blazor_client-demo"
+              >https://gitlab.com/Phoenix510/rest_api-blazor_client-demo</a
+            >
+          </div>
+          <div class="projectField">
+            <h4 class="projectField-header">Opis:</h4>
+            <p>
+              Pozwala wysyłać i odbierać wiadomości publiczne oraz takie
+              wymianiane pomiędzy zarejestrowanymi użytkownikami. Wiadmości
+              wysyłane są poprzez protokuł HTTP, ale wszystkie pozostałe
+              informacje (np. że dostałeś nową wiadomość) przekazywane są
+              poprzez WebSockets.
+            </p>
+          </div>
+        </article>
+        <article class="projectArticle">
+          <h3>HTTP/1.1 Serwer</h3>
+          <div class="projectField">
+            <h4 class="projectField-header">Link:</h4>
+            <a href="https://gitlab.com/Phoenix510/basichttpserver"
+              >https://gitlab.com/Phoenix510/basichttpserver</a
+            >
+          </div>
+          <div class="projectField">
+            <h4 class="projectField-header">Opis:</h4>
+            <p>
+              Prosty serwer HTTP/1.1 wspierający metody GET, POST i OPTIONS oraz
+              działający na systemach operacyjnych z rodzin: Windows oraz Linux.
+            </p>
+          </div>
+        </article>
+        <article class="projectArticle">
+          <h3>Chrome extension for youtube videoplayer</h3>
+          <div class="projectField">
+            <h4 class="projectField-header">Link:</h4>
+            <a
+              href="https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii"
+            >
+              https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii</a
+            >
+          </div>
+          <div class="projectField">
+            <h4 class="projectField-header">Opis:</h4>
+            <p>
+              Rozszerzenie do przeglądarki Chrome pozwalające zmieniać szybkość
+              odtwarzanie wideo w serwisie Youtube od 0 do 10, poprzez
+              zdefiniowany przez użytkownika krok. Kontrolki są zintegrowane z
+              natywnym odtwarzaczem youtube w postaci: suwaka znajdującego się
+              poniżej opcji jakość w odtwarzaczu i poprzez obsługę wciśnięcia
+              zdefiniowanych przez użytkownika przycisków (domyślnie '-' albo
+              'a' żeby zmniejszyć i '+' albo 'd' żeby zwiększyć prędkość).
+            </p>
+          </div>
+        </article>
+      </section>
+      <script src="../three.min.js"></script>
+      <script src="../vanta.net.min.js"></script>
+      <script>
+        VANTA.NET({
+          el: ".firstSection",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: true,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0x636688,
+          backgroundColor: 0x0d0d12,
+          maxDistance: 19.0,
+          spacing: 16,
+        });
+      </script>
     </main>
-</body>
+  </body>
 </html>
