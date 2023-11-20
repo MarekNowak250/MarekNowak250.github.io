@@ -47,6 +47,7 @@ html {
 
 h1 {
   font-size: 5.652rem; /* 67.36px */
+  letter-spacing: -1px;
 }
 
 h2 {
@@ -67,6 +68,7 @@ h5 {
 
 small {
   font-size: 0.75rem; /* 12px */
+  line-height: 1.5;
 }
 
 a {
@@ -131,6 +133,7 @@ a {
 
 .authorName {
   margin-bottom: 10px;
+  line-height: 1.2;
 }
 
 .load-more {
@@ -209,26 +212,11 @@ a {
 
 .projectField > p {
   align-self: center;
+  line-height: 1.5;
 }
 
 .projectField > a:focus-visible {
   outline: var(--mainColor) dashed 2px;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  font-size: 0.75rem;
-
-  /* Position the tooltip */
-  position: absolute;
-  bottom: 0px;
-  text-align: left;
-  z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  color: var(--text);
 }
 
 @media only screen and (max-width: 600px) {
