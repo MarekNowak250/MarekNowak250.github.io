@@ -214,6 +214,25 @@ a {
 
 .projectField > a {
   align-self: center;
+  text-decoration: underline;
+  color: dodgerblue;
+}
+
+.projectField > a:visited {
+  color: dodgerblue;
+  filter: brightness(0.45);
+}
+
+.projectField > a:focus {
+  filter: brightness(1.5);
+}
+
+.projectField > a:hover {
+  filter: brightness(0.75);
+}
+
+.projectField > a:active {
+  filter: brightness(1.5);
 }
 
 .projectField > p {
