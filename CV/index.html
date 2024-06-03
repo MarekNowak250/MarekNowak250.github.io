@@ -5,18 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="index.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
     <title>Marek Nowak</title>
   </head>
   <body>
     <main>
       <section class="main_section personal_section">
-        <h2 class="main_section-header"></h2>
+        <span class="main_section-header"></span>
         <div class="main_section-content personal_content">
           <article class="personal_article">
             <header>Marek Nowak</header>
@@ -33,55 +27,68 @@
         </div>
       </section>
       <section class="main_section">
-        <h2 class="main_section-header">Summary</h2>
-        <div class="main_section-content">
-          I have a background in a field of developing applications with C#
-          language and .NET technologies, mainly with ASP.NET (REST APIs), WPF,
-          Blazor and Xamarin. I am acquainted with GIT and Docker. I am not
-          afraid of legacy code as well as of creating new features and facing
-          challanges, which demand new knowledge.
+        <span class="main_section-header">Summary</span>
+        <div class="main_section-content summary-content">
+I have experience in developing and managing applications using C# and the .NET platform. I am proficient in working with frameworks such as WPF, Blazor, and Xamarin. 
+Additionally, I have some non-professional experience with Python, JavaScript and Go.
         </div>
       </section>
       <section class="main_section">
-        <h2 class="main_section-header">Experience</h2>
+        <span class="main_section-header">Experience</span>
         <div class="main_section-content">
           <article class="experience_article">
-            <h3 class="experience_article-header">SE Bordnetze Polska</h3>
+            <span class="experience_article-header">Xopero Software</span>
             <section class="experience_article-section">
-              <h4 class="experience_article-section-header">
+              <span class="experience_article-section-header">Junior C# Developer</span>
+              <div> April 2024 - Present </div>
+              <p>
+                I am a member of a team that works on the backend of backup software. My primary responsibilities involve fixing bugs in the current codebase utilized for backing up GIT services and establishing support for a new service, Azure DevOps.
+              </p>
+              <p>I am involved in features such as synchronizing Azure DevOps with 'our' software, creating and managing backup and restore plans, as well as backuping and restoring resources like pipelines, merge request.</p>
+            </section>
+
+            <section class="experience_article-section">
+              <span class="experience_article-section-header">Internship</span>
+              <div>January 2019 - June 2019</div>
+              <p>
+                Developing simple desktop applications with WPF and Windows
+                Forms
+              </p>
+            </section>
+          </article>
+          <article class="experience_article">
+            <span class="experience_article-header">SE Bordnetze Polska</span>
+            <section class="experience_article-section">
+              <span class="experience_article-section-header">
                 Software developer
-              </h4>
-              <div>October 2022 - Present</div>
+              </span>
+              <div>October 2022 - March 2024</div>
               <p>
                 Designing, developing and maintenance business applications. I
                 am working mainly with following technologies: Blazor, .NET and
                 Xamarin.
               </p>
               <div>
-                Example projects:
+                Projects:
                 <ul>
                   <li>
-                    <h5 class="int_proj-p">
-                      Investment application (Blazor WASM web client + REST API
-                      server + MS SQL)
-                    </h5>
+                    <span class="int_proj-p">
+                      <b>Manufacturing Executiuon System (MES)</b> (Blazor WASM web client + MAUI desktop client + REST API
+                      server + MySql)
+                    </span>
                     <p>
-                      I am responsible for maintaining and adding new features
-                      to application focusing on managing budgets for
-                      departments/plants.
+I was a part of a team building a manufacturing execution system. My main responsibility was building libraries focused on machine communication. This involved processing data provided in files (of different types depending on the vendor) and updating the system state, as well as creating files containing update of system state in formats supported by a particular machine.
                     </p>
                   </li>
                   <li>
-                    <h5 class="int_proj-p">
-                      Transportation management system (Blazor WASM web client +
+                    <span class="int_proj-p">
+                      <b>Transportation management system (TMS)</b> (Blazor WASM web client +
                       Xamarin client (for Zebra scanner devices based on
                       android) + REST API server + MS SQL)
-                    </h5>
+                    </span>
                     <p>
-                      I am responsible for maintaining and adding new features
-                      to application focusing on managing transport loads and
-                      its content between internal plants and external partners.
-                      I am also responsible for deployment and management of
+                      I have extended a service for managing loads and goods in internal transportation, tracking their status, and taking various types of inventories. I built REST API features using C#, extended a mobile Xamarin app and a web Blazor administrator panel.
+                      I was also responsible for deployment and management of
                       Docker containers with the application and dependencies
                       running on the Azure server
                     </p>
@@ -90,100 +97,103 @@
               </div>
             </section>
             <section class="experience_article-section">
-              <h4 class="experience_article-section-header">
+              <span class="experience_article-section-header">
                 Junior Software Developer
-              </h4>
+              </span>
               <div>May 2022 - October 2022</div>
               <p>
                 Designing, developing and maintenance business applications. I
                 was working mainly with following technologies: Blazor, .NET
               </p>
-            </section>
-          </article>
-          <article class="experience_article">
-            <h3 class="experience_article-header">Xopero Software</h3>
-            <section class="experience_article-section">
-              <h4 class="experience_article-section-header">Internship</h4>
-              <div>January 2019 - June 2019</div>
-              <p>
-                Developing simple desktop applications with WPF and Windows
-                Forms
-              </p>
+                  <div>
+                Projects:
+                <ul>
+                  <li>
+                    <span class="int_proj-p">
+                      <b> Investment application </b> (Blazor WASM web client + REST API
+                      server + MS SQL)
+                    </span>
+                    <p>
+                      I am responsible for maintaining and adding new features
+                      to application focusing on managing budgets for
+                      departments/plants.
+                    </p>
+                  </li>
+                </ul>
+              </div>
             </section>
           </article>
         </div>
       </section>
       <section class="main_section">
-        <h2 class="main_section-header">Education</h2>
+        <span class="main_section-header">Education</span>
         <div class="main_section-content">
           <article class="experience_article">
-            <h3 class="experience_article-header">
+            <span class="experience_article-header">
               Akademia im. Jakuba z Paradyża w Gorzowie Wielkopolskim
-            </h3>
+            </span>
             <section class="experience_article-section">
-              <h4 class="experience_article-section-header">Master's degree</h4>
-              <div>October 2022 - Present</div>
+              <span class="experience_article-section-header">
+                Master's degree, Information Technology 
+              </span>
+              <div>October 2022 - March 2024</div>
+              <p>Grade: 5, Thesis name: Translating polish sign language to text using 3D conv network.</p>
             </section>
             <section class="experience_article-section">
-              <h4 class="experience_article-section-header">
+              <span class="experience_article-section-header">
                 Engineer's degree, Information Technology
-              </h4>
+              </span>
               <div>October 2018 - March 2022</div>
-              <p>Grade: 5, Project name: Social web communicator</p>
+              <p>Grade: 5, Thesis name: Social web communicator</p>
             </section>
           </article>
         </div>
       </section>
       <section class="main_section">
-        <h2 class="main_section-header">Projects</h2>
+        <span class="main_section-header">Projects</span>
         <div class="main_section-content">
           <article class="experience_article">
             <section class="experience_article-section">
-              <h3 class="experience_article-header">
-                Web communicator demo (BLAZOR + REST API + WebSockets)
-              </h3>
+              <span class="experience_article-header">
+                Git service client
+              </span>
               <div>
-                <a
-                  href="https://gitlab.com/Phoenix510/rest_api-blazor_client-demo"
-                  >https://gitlab.com/Phoenix510/rest_api-blazor_client-demo</a
-                >
+                <a href="https://gitlab.com/Phoenix510/git_service_client">
+                  https://gitlab.com/Phoenix510/git_service_client
+                </a>
               </div>
               <p>
-                Allows to send and receive messages between registered users and
-                public messages visible by everyone. Messages are send through
-                http request, but all information (e.g. that you received new
-                message) are sent through web sockets.
+A client for git services integrated with Gitlab and Github, enabling the reading, creation, and deletion of issues. 
+Additionally, it allows for exporting issues from a certain project and importing them into any supported service.
               </p>
             </section>
           </article>
 
           <article class="experience_article">
             <section class="experience_article-section">
-              <h3 class="experience_article-header">
-                Web communicator (JS/WebSockets)
-              </h3>
+              <span class="experience_article-header">
+                Text editor
+              </span>
               <div>
-                <a href="https://gitlab.com/Phoenix510/js_websockets"
-                  >https://gitlab.com/Phoenix510/js_websockets</a
-                >
+                <a href="https://gitlab.com/Phoenix510/text-editor">
+                  https://gitlab.com/Phoenix510/text-editor
+                </a>
               </div>
               <p>
-                Simple application built with JavaScript and WebSockets. Allows
-                to create and join rooms as well as send text messages.
+                Simple text editor written from scratch. Supports only keyboard, no mouse. Hande quite big text files, by rendering only visible text.
               </p>
             </section>
           </article>
 
           <article class="experience_article">
             <section class="experience_article-section">
-              <h3 class="experience_article-header">
+              <span class="experience_article-header">
                 Custom Youtube Playback Speed
-              </h3>
+              </span>
               <div>
-                <a
-                  href="https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii"
-                  >https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii</a
-                >
+                <a href="https://github.com/MarekNowak250/Change-youtube-playback-speed-chrome-extension">
+                  https://github.com/MarekNowak250/Change-youtube-playback-speed-chrome-extension
+                </a>
               </div>
               <p>
                 Chrome extension which allows to change youtube video playback
@@ -197,60 +207,20 @@
         </div>
       </section>
       <section class="main_section">
-        <h2 class="main_section-header">Technologies</h2>
-        <div class="main_section-content">
-          <article class="experience_article">
-            <h3 class="experience_article-header">Programming languages</h3>
-            <ul>
-              <li class="technologies_list-item">C# (main)</li>
-              <li class="technologies_list-item">Python</li>
-            </ul>
-          </article>
-          <article class="experience_article">
-            <h3 class="experience_article-header">Web frameworks</h3>
-            <ul>
-              <li class="technologies_list-item">Blazor</li>
-            </ul>
-          </article>
-          <article class="experience_article">
-            <h3 class="experience_article-header">Mobile frameworks</h3>
-            <ul>
-              <li class="technologies_list-item">Xamarin.Forms</li>
-            </ul>
-          </article>
-          <article class="experience_article">
-            <h3 class="experience_article-header">
-              Database management system
-            </h3>
-            <ul>
-              <li class="technologies_list-item">Microsoft SQL Server</li>
+        <span class="main_section-header">Technologies</span>
+            <ul class="technologies_list">
+              <li class="technologies_list-item">C# (main), </li>
+              <li class="technologies_list-item">Python,</li>
+              <li class="technologies_list-item">Blazor,</li>
+              <li class="technologies_list-item">Xamarin.Forms,</li>
+              <li class="technologies_list-item">Microsoft SQL Server,</li>
               <li class="technologies_list-item">MySql</li>
-            </ul>
-          </article>
-          <article class="experience_article">
-            <h3 class="experience_article-header">Desktop frameworks</h3>
-            <ul>
-              <li class="technologies_list-item">WPF</li>
-            </ul>
-          </article>
-          <article class="experience_article">
-            <h3 class="experience_article-header">Testing</h3>
-            <ul>
-              <li class="technologies_list-item">xUnit.NET</li>
-              <li class="technologies_list-item">Fluent Assertions</li>
-              <li class="technologies_list-item">Moq</li>
-              <li class="technologies_list-item">Test containers</li>
-              <li class="technologies_list-item">WireMock.Net</li>
-            </ul>
-          </article>
-          <article class="experience_article">
-            <h3 class="experience_article-header">Other</h3>
-            <ul>
-              <li class="technologies_list-item">Docker</li>
+              <li class="technologies_list-item">xUnit.NET,</li>
+              <li class="technologies_list-item">Fluent Assertions,</li>
+              <li class="technologies_list-item">Moq,</li>
+              <li class="technologies_list-item">Docker,</li>
               <li class="technologies_list-item">Docker Desktop/Rancher</li>
             </ul>
-          </article>
-        </div>
       </section>
     </main>
   </body>
