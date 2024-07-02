@@ -102,7 +102,6 @@ body {
 }
 
 .technologies_list-item {
-  display: inline-block;
   font-size: 1.125rem;
   margin-bottom: 8px;
 }
