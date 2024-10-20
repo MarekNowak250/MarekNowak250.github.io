@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Marek Nowak</title>
+    <link rel="stylesheet" href="./css/new-main.css" />
+    <style>
+        .skills-grid {
+            padding: 6rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        #skills {
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        #skills .skill-grid {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html"><h1>Marek Nowak</h1></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html" class="active">Skills</a></li>
+                <li><a href="education-publications.html">Education & Publications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="skills-grid">
+                <section id="skills">
+                        <h2 class="section-title">Languages</h2>
+                        <div class="skill-grid">
+                            <div class="skill-item">C#</div>
+                            <div class="skill-item">Python</div>
+                            <div class="skill-item">JavaScript (limited proficiency)</div>
+                        </div>
+                </section>
+                <section id="skills">
+                        <h2 class="section-title">UI Frameworks</h2>
+                        <div class="skill-grid">
+                            <div class="skill-item">WPF</div>
+                            <div class="skill-item">Blazor</div>
+                            <div class="skill-item">Xamarin.Forms</div>
+                        </div>
+                </section>
+                <section id="skills">
+                        <h2 class="section-title">Machine learning</h2>
+                        <div class="skill-grid">
+                            <div class="skill-item">Tensorflow</div>
+                            <div class="skill-item">Scikit-Learn</div>
+                            <div class="skill-item">Weka</div>
+                        </div>
+                </section>
+                <section id="skills">
+                        <h2 class="section-title">DBMS</h2>
+                        <div class="skill-grid">
+                            <div class="skill-item">MS SQL Server</div>
+                            <div class="skill-item">MySql</div>
+                            <div class="skill-item">LiteDb</div>
+                        </div>
+                </section>
+                <section id="skills">
+                        <h2 class="section-title">Testing</h2>
+                        <div class="skill-grid">
+                            <div class="skill-item">xUnit.NET</div>
+                            <div class="skill-item">Fluent Assertions</div>
+                            <div class="skill-item">NSubstitute</div>
+                            <div class="skill-item">Moq</div>
+                        </div>
+                </section>
+                <section id="skills">
+                        <h2 class="section-title">Containerization</h2>
+                        <div class="skill-grid">
+                            <div class="skill-item">Docker</div>
+                            <div class="skill-item">Blazor</div>
+                            <div class="skill-item">Docker Desktop/Rancher</div>
+                        </div>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

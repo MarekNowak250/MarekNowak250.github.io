@@ -1,102 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content=".Net Developer" />
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./index.css" />
-    <link rel="stylesheet" href="./css/fontello.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marek Nowak</title>
-  </head>
-  <body>
-    <main>
-      <section class="firstSection" id="el">
-        <a class="gitlabIcon" href="https://gitlab.com/Phoenix510">
-          <i class="icon-gitlab icon"></i>
-        </a>
-        <div class="linksContainer">
-          <a class="promoLinks" href="https://www.linkedin.com/in/mnowak250">
-            <i class="icon-linkedin icon"></i>
-          </a>
-          <a class="promoLinks icon" href="mailto:marek.n6666@gmail.com">
-            <i class="icon-mail icon"></i>
-          </a>
-        </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/new-main.css" />
+    <style>
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(9,9,25,1), rgba(21,21,52,1));
+        }
 
-        <div class="authorInfo">
-          <div>
-            <h1 class="authorName">Marek Nowak</h1>
-            <h3>Software Developer</h3>
-          </div>
-        </div>
-        <a class="arrow_down icon" href="#second_part"></a>
-      </section>
-      <section class="secondSection" id="second_part">
-        <h2 class="secondSection-header">Projects</h2>
-        <article class="projectArticle">
-          <h3>Web communicator demo (BLAZOR + REST API + WebSockets)</h3>
-          <div class="projectField">
-            <h4 class="projectField-header">Link:</h4>
-            <a href="https://gitlab.com/Phoenix510/rest_api-blazor_client-demo"
-              >https://gitlab.com/Phoenix510/rest_api-blazor_client-demo</a
-            >
-          </div>
-          <div class="projectField">
-            <h4 class="projectField-header">Description:</h4>
-            <p>
-              Allows to send and receive messages between registered users and
-              public messages visible by everyone. Messages are send through
-              http request, but all information (e.g. that you received new
-              message) are sent through web sockets.
-            </p>
-          </div>
-        </article>
-        <article class="projectArticle">
-          <h3>Web communicator (JS/WebSockets)</h3>
-          <div class="projectField">
-            <h4 class="projectField-header">Link:</h4>
-            <a href="https://gitlab.com/Phoenix510/js_websockets"
-              >https://gitlab.com/Phoenix510/js_websockets</a
-            >
-          </div>
-          <div class="projectField">
-            <h4 class="projectField-header">Description:</h4>
-            <p>
-              Simple application built with JavaScript and WebSockets. Allows to
-              create and join rooms as well as send text messages.
-            </p>
-          </div>
-        </article>
-        <article class="projectArticle">
-          <h3>Chrome extension for youtube videoplayer</h3>
-          <div class="projectField">
-            <h4 class="projectField-header">Link:</h4>
-            <a
-              href="https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii"
-            >
-              https://chrome.google.com/webstore/detail/custom-youtube-playback-s/mlnghacnjjppjfbbjbpkgcemiaglbpii
-            </a>
-          </div>
-          <div class="projectField">
-            <h4 class="projectField-header">Description:</h4>
-            <p>
-              Chrome extension which allows to change youtube video playback
-              speed from 0 to 10, by custom step. The controls are integrated
-              with youtube player in form of: draggable bar below quality option
-              in player settings and by specified by user keys (by default '-'
-              or a' to subtract and '+' or 'd' to add)
-            </p>
-          </div>
-        </article>
-      </section>
-      <script src="./main.js"></script>
-      <script src="three.min.js"></script>
-      <script src="vanta.net.min.js"></script>
-      <script>
+        #home h2 {
+            font-family: 'Lato', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(var(--text-color), var(--accent-color));
+            background-clip: text;
+            color: transparent;
+            animation: gradient 5s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html"><h1>Marek Nowak</h1></a>
+
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="education-publications.html">Education & Publications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="container container-body">
+                <h2>Software Engineer & academic lecturer.</h2>
+                <p>A skilled developer with extensive experience in building and managing applications using C# and the .NET platform, proficient in frameworks such as WPF, Blazor, and Xamarin.</p>
+                <div class="social-links">
+                    <a href="https://gitlab.com/Phoenix510" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-gitlab"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mnowak250" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:marek.n6666@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <script src="three.min.js"></script>
+        <script src="vanta.net.min.js"></script>
+         <script>
         VANTA.NET({
-          el: ".firstSection",
+          el: "#home",
           mouseControls: true,
           touchControls: true,
           gyroControls: true,
@@ -104,12 +102,12 @@
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0x636688,
-          backgroundColor: 0x0d0d12,
-          maxDistance: 19.0,
+          color: 0xeaeaf6,
+          backgroundColor: 0x090919,
+          maxDistance: 18.0,
           spacing: 16,
         });
       </script>
     </main>
-  </body>
+</body>
 </html>

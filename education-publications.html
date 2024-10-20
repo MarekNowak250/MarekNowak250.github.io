@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education & Publications - Marek Nowak</title>
+    <link rel="stylesheet" href="./css/new-main.css" />
+    <style>
+        main {
+            padding-top: 6rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .education-section,
+        .publications-section {
+            margin-bottom: 4rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 1rem 2rem;
+            position: relative;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            width: calc(50% - 2rem);
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+                .timeline-item:nth-child(odd) {
+            left: 4%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+
+        .timeline-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            font-style: italic;
+            color: var(--accent-color);
+        }
+
+        .publications-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .publication-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .publication-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-card p {
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-card .authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-card .journal {
+            color: var(--accent-color);
+        }
+
+        .publication-card .links {
+            margin-top: 1rem;
+        }
+
+        .publication-card .links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .publication-card .links a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::before {
+                left: 21px;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html"><h1>Marek Nowak</h1></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="education-publications.html" class="active">Education & Publications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="education-section">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Master's degree in Information Technology</h3>
+                        <p>Akademia im. Jakuba z Paradyża w Gorzowie Wielkopolskim</p>
+                        <p>Thesis: Study on the possibility of recognizing Polish Sign Language gestures with the help of deep neural networks</p>
+                        <p class="date">2022 - 2024</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Engineer's degree in Information Technology</h3>
+                        <p>Akademia im. Jakuba z Paradyża w Gorzowie Wielkopolskim</p>
+                        <p>Thesis: Social web communicatory</p>
+                        <p class="date">2018 - 2022</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="publications-section">
+                <h2 class="section-title">Publications</h2>
+                <div class="publications-list">
+                    <div class="publication-card">
+                        <h3>Polish Sign Language Gestures to Text Conversion Using Machine Learning</h3>
+                        <p class="authors">Lemieszewski, Ł., Nowak, M. & Becker, J.</p>
+                        <p class="journal">In B. Marcinkowski, A. Przybylek, A. Jarzębowicz, N. Iivari, E. Insfran, M. Lang, H. Linger, & C. Schneider (Eds.), Harnessing Opportunities: Reshaping ISD in the post-COVID-19 and Generative AI Era (ISD2024 Proceedings). Gdańsk, Poland: University of Gdańsk</p>
+                        <p>This paper addresses the communication challenges faced by the deaf community in Poland by developing an intelligent application to convert Polish sign language (PJM) gestures into text. The research focuses on adapting hybrid deep neural network models, selected based on studies of other sign languages, and fine-tuning them through transfer learning using a dataset of Polish sign language. </p>
+                        <div class="links">
+                            <a href="https://aisel.aisnet.org/isd2014/proceedings2024/datascience/33/" target="_blank">Read Paper</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
