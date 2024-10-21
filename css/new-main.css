@@ -25,6 +25,8 @@
         .container {
             max-width: 1200px;
             margin: auto;
+            padding-left: 16px;
+            padding-right: 16px;
         }
 
         .container a{
@@ -34,7 +36,7 @@
         .container-body{
             background-color: rgba(9, 9, 25, 0.6);
             border-radius: 20px;
-            padding: 16px;
+
         }
 
         header {
@@ -94,7 +96,7 @@
             width: 100%;
         }
 
-  @media (max-width: 768px) {
+  @media (max-width: 760px) {
             nav {
                 flex-direction: column;
             }

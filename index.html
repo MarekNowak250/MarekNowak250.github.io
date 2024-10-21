@@ -27,12 +27,6 @@
             background-size: 200% 200%;
         }
 
-        @keyframes gradient {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
-        }
-
         #home p {
             font-size: 1.2rem;
             max-width: 600px;
@@ -56,6 +50,20 @@
             color: var(--primary-color);
             transform: translateY(-3px);
         }
+
+          @media (max-width: 760px) {
+            #home{
+                margin: 0px 8px;
+            }
+
+            #home h2 {
+                font-size: 2.6rem;
+            }
+
+            #home p {
+                font-size: 1.1rem;
+            }
+          }
     </style>
 </head>
 <body>

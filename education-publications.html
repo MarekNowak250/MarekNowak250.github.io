@@ -140,24 +140,34 @@
             color: var(--secondary-color);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 760px) {
+        main {
+            padding-top: 9rem;
+        }
+
             .timeline::after {
-                left: 31px;
+               display: none;
             }
 
             .timeline-item {
                 width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
             }
 
             .timeline-item:nth-child(even) {
                 left: 0;
             }
 
+            .timeline-item:nth-child(odd) {
+                left: 0;
+            }
+
             .timeline-item::before {
-                left: 21px;
-                right: auto;
+                left: 0;
+                display: none;
+            }
+
+            .timeline {
+            padding: 2rem 0;
             }
         }
     </style>
